@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio</title>
+  <link rel="stylesheet" href="./assets/libs/bootstrap-4.6.0-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="./assets/css/login.css">
+  <style>
+    #contenido {
+      margin-top: 2em;
+      margin-right: auto;
+      margin-bottom: auto;
+      margin-left: auto;
+      width: 50%;
+    }
+    div.item-search {
+      text-align: end;
+      background-color: #282A35;
+      line-height: 3;
+    }
+    #nav-item-search {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-left">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">APP WEB</a>
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link nav-link-id" href="#">Inicio</a>
+        </li>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+            Empresa
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Registrar su información</a>
+            <a class="dropdown-item" href="#">Registrar sus productos</a>
+            <a class="dropdown-item" href="#">Control de los pedidos</a>
+          </div>
+        </li>
+        <!-- Search -->
+        <div id="nav-item-search">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+              Buscador
+            </a>
+            <div class="dropdown-menu">
+              <form style="width: 100%;" class="form-inline" action="/action_page.php">
+                <input style="width: 100%;" class="form-control dropdown-item" type="search" placeholder="¿Que desea buscar?">
+              </form>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="item-search">
+    <form class="form-inline" action="/action_page.php">
+      <input class="form-control mr-sm-2" type="search" placeholder="¿Que desea buscar?">
+    </form>
+  </div>
+
+  <div id="contenido">
+    <div>
+      <div class="imgcontainer">
+        <img src="./assets/img/empresa.jpg" width="200" height="200" alt="Avatar" class="avatar">
+      </div>
+      <h1>Iniciar sesión</h1>
+    </div>
+    <div>
+      <form onsubmit="return setAction(this)">
+          <input id="user" type="email" placeholder="Correo electrónico" name="email" required>
+          <input id="pass" type="password" placeholder="Contraseña" name="password" required>
+          <div class="invalid-feedback">Correo electrónico o contraseña incorrecta</div>
+        <div class="rememberpsw">
+          <label><input type="checkbox" name="remember_user"> Recordar usuario</label>
+        </div>
+        <div style="text-align: center;">
+          <input type="submit" value="Acceder">
+        </div>
+      </form>
+    </div>
+      <div class="forgetpsw">
+        <span><a href="#">¿Olvidaste usuario o contraseña?</a></span>
+      </div>
+      <hr>
+  </div>
+
+  <footer class="footer mt-auto py-3" style="text-align: center;">
+    <div class="container">
+      <span class="text-muted">Derecho reservados &copy; 2021</span>
+    </div>
+  </footer>
+
+
+
+  <script src="./assets/libs/sweetAlert2/sweetalert2.all.min.js"></script>
+  <script src="./assets/libs/jquery/jquery.min.js"></script>
+  <script src="./assets/libs/bootstrap-4.6.0-dist/js/bootstrap.js"></script>
+  <script src="./assets/libs/bootstrap-select-1.13.1/js/bootstrap-select.js"></script>
+  <script src="./assets/js/validacion-empresa.js"></script>
+
+</body>
+</html>

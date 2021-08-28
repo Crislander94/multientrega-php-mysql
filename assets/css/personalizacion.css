@@ -1,0 +1,20 @@
+.contenido {
+  margin-top: 2em;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+}
+.contenido.contenido_login{
+    width: 50%;
+}
+.contenido.contenido_main{
+    width: 70%;
+}
+div.item-search {
+  text-align: end;
+  background-color: #282A35;
+  line-height: 3;
+}
+#nav-item-search {
+  display: none;
+}
