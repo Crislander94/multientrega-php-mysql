@@ -2,9 +2,9 @@
     require_once 'verificar.php';
     include_once '/partials/cabecera.php';
     include_once '/partials/menu.php';
-    if($_POST['action'] === 'Guardar'){
 
-    }
+
+    
 ?>
 <div class="contenido contenido_main">
     <form action="/action_page.php" class="needs-validation" style="margin-bottom: 1rem;" novalidate>

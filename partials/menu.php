@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-left">
     <!-- Brand -->
-    <a class="navbar-brand" href="#">APP WEB</a>
+    <a class="navbar-brand" href="#">Bienvenid@ <?php echo $_SESSION['username'] ?></a>
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -14,13 +14,23 @@
         <!-- Dropdown -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-            Empresa
+                Empresa
             </a>
             <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Registrar su información</a>
-            <a class="dropdown-item" href="#">Registrar sus productos</a>
-            <a class="dropdown-item" href="#">Control de los pedidos</a>
+                <?php if(!isset($_SESSION["cod_empresa"])) : ?>
+                    <a class="dropdown-item" href="<?php echo RUTA.'registrar-empresa.php'; ?>">Registrar su informacion</a>
+                <?php endif;?>
+                <?php if(isset($_SESSION["cod_empresa"])):  ?>
+                    <a class="dropdown-item" href="<?php echo RUTA.'mod-empresa.php'; ?>">Modificar su informacion</a>
+                    <a class="dropdown-item" href="<?php echo RUTA.'registrar-productos.php'; ?>">Registrar sus productos</a>
+                    <a class="dropdown-item" href="<?php echo RUTA.'control-pedidos.php'; ?>">Control de los pedidos</a>
+                    <a class="dropdown-item" href="<?php echo RUTA.'control-pedidos-pendientes.php'; ?>">Control de los pedidos Pendientes</a>
+                    <a class="dropdown-item" href="<?php echo RUTA.'control-pedidos-completados.php'; ?>">Control de los pedidos Completados</a>
+                <?php endif;?>
             </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo RUTA.'login/cerrar-sesion.php'; ?>">Cerrar sesión</a>
         </li>
         <!-- Search -->
         <div id="nav-item-search">

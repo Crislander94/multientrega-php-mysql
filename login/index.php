@@ -1,10 +1,13 @@
+<?php 
+  require_once 'validar-login.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard MultiEntrega</title>
+    <title>Inicio de Sesion</title>
     <link rel="stylesheet" href="../assets/libs/bootstrap-4.6.0-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="stylesheet" href="../assets/css/personalizacion.css">
@@ -12,6 +15,17 @@
 <body>
   <div id="contenido" class="contenido contenido_login">
     <div>
+      <?php if(isset($_SESSION['error'])) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          El usuario no se encuentra en nuestros registros
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <?php
+        unset($_SESSION['error']);
+        endif; 
+      ?>
       <div class="imgcontainer">
         <img src="../assets/img/empresa.jpg" width="200" height="200" alt="Avatar" class="avatar">
       </div>
@@ -39,6 +53,9 @@
       <span class="text-muted">Derecho reservados &copy; 2021</span>
     </div>
   </footer>
+  <script src="../assets/libs/jquery/jquery.min.js"></script>
+  <script src="../assets/libs/popper/popper.min.js"></script>
+  <script src="../assets/libs/bootstrap-4.6.0-dist/js/bootstrap.js"></script>
   <script src="../assets/libs/sweetAlert2/sweetalert2.all.min.js"></script>
   <script src="js/validaciones_login.js"></script>
 </body>
