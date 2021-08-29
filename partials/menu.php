@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link nav-link-id" href="#">Inicio</a>
+            <a class="nav-link nav-link-id" href="<?php echo RUTA; ?>">Inicio</a>
         </li>
         <!-- Dropdown -->
         <li class="nav-item dropdown">
@@ -22,7 +22,7 @@
                 <?php endif;?>
                 <?php if(isset($_SESSION["cod_empresa"])):  ?>
                     <a class="dropdown-item" href="<?php echo RUTA.'mod-empresa.php'; ?>">Modificar su informacion</a>
-                    <a class="dropdown-item" href="<?php echo RUTA.'registrar-productos.php'; ?>">Registrar sus productos</a>
+                    <a class="dropdown-item" href="<?php echo RUTA.'producto.php'; ?>">Productos</a>
                     <a class="dropdown-item" href="<?php echo RUTA.'control-pedidos.php'; ?>">Control de los pedidos</a>
                     <a class="dropdown-item" href="<?php echo RUTA.'control-pedidos-pendientes.php'; ?>">Control de los pedidos Pendientes</a>
                     <a class="dropdown-item" href="<?php echo RUTA.'control-pedidos-completados.php'; ?>">Control de los pedidos Completados</a>

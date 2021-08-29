@@ -27,26 +27,14 @@
     $correo = $result[0]['correo'];
     $telefono = $result[0]['telefono'];
     $direccion = $result[0]['direccion'];
-    $formas_pago = $result[0]['formas_pago'];
     $tipo_empresa = $result[0]['tipo_empresa'];
-    $dias = $result[0]['dias'];
-    $horas = $result[0]['horas'];
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $array_days = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-        $strings_days = '';
         if(
             isset($_POST['nom_empresa']) &&
             isset($_POST['ruc']) &&
             isset($_POST['correo']) &&
             isset($_POST['telefono']) &&
             isset($_POST['radio-stacked']) &&
-            isset($_POST['horarios']) &&
-            isset($_POST['desde_hora']) &&
-            isset($_POST['min_desde']) &&
-            isset($_POST['hasta_hora']) &&
-            isset($_POST['min_hasta']) &&
-            isset($_POST['formaspago']) &&
-            isset($_POST['strings_pagos']) &&
             isset($_POST['direccion'])
         ){
             $xnom_empresa = $_POST['nom_empresa'];
@@ -54,34 +42,7 @@
             $xcorreo = $_POST['correo'];
             $xtelefono = $_POST['telefono'];
             $xtipo = $_POST['radio-stacked'];
-            $xhorarios = $_POST['horarios'];
-            $xdesde_hora = $_POST['desde_hora'];
             $xdireccion = $_POST['direccion'];
-            $xmin_desde = $_POST['min_desde'];
-            $xhasta_hora = $_POST['hasta_hora'];
-            $xmin_hasta = $_POST['min_hasta'];
-            $xstrings_pagos = $_POST['strings_pagos'];
-            $xformas_pago = $_POST['formaspago'];
-            $xhasta_hora = $_POST['hasta_hora'];
-            $xdesde_hora = $_POST['desde_hora'];
-            if(intval($xdesde_hora) > 12){
-                $xmin_desde .= ' PM ';
-            }else{
-                $xmin_desde .= ' AM ';
-            }
-            if(intval($xhasta_hora) > 12){
-                $xmin_hasta .= ' PM ';
-            }else{
-                $xmin_hasta .= ' AM ';
-            }
-            $horario_final = $xdesde_hora.':'.$xmin_desde.' - '.$xhasta_hora.':'.$xmin_hasta;
-            foreach ($xhorarios as $key => $xhorario) {
-                if($key === count($xhorarios) -1){
-                    $strings_days.= $array_days[$xhorario-1];
-                }else{
-                    $strings_days.= $array_days[$xhorario-1].',';
-                }
-            }
             //Insertar Informacion de la empresa
             $query = "UPDATE empresa
                         set
@@ -91,7 +52,6 @@
                             telefono =  '$xtelefono',
                             tipo =  '$xtipo',
                             direccion =  '$xdireccion',
-                            formas_pago =  '$xstrings_pagos',
                             edited_at = CURRENT_TIMESTAMP(),
                             edited_by = '".$_SESSION['cod_usuario']."'
                         where
@@ -102,16 +62,6 @@
                 $conexion->beginTransaction();
                 //Ejecutamos el query
                 $conexion->exec($query);
-                //Insertamos el horario de la empresa
-                $xquery = "UPDATE horarios 
-                            set 
-                                dias = '$strings_days', 
-                                horas= '$horario_final',
-                                edited_at = CURRENT_TIMESTAMP(),
-                                edited_by = '".$_SESSION['cod_usuario']."'
-                             where
-                                cod_empresa = '".$_SESSION['cod_empresa']."'";
-                $conexion->exec($xquery);
                 //Actualizamos la empresa del usuario...
                 $conexion->commit();
                 $_SESSION['success_mod'] = true;
@@ -137,7 +87,8 @@
         unset($_SESSION['error']);
         endif; 
     ?>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" id="form_registrar_empresa" class="needs-validation" style="margin-bottom: 1rem;">
+    <h3 class="text-center">Modifica tu empresa</h3>
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" id="form_modificar_registro" class="needs-validation" style="margin-bottom: 1rem;">
         <div class="form-group">
             <label for="nom_empresa">Nombre:</label>
             <input type="text" class="form-control" id="nom_empresa" placeholder="Registre nombre" value="<?php echo $nom_empresa?>" name="nom_empresa">
@@ -148,7 +99,7 @@
         </div>
         <div class="form-group">
             <label for="direccion">Direccion:</label>
-            <input type="text" class="form-control" id="direccion" placeholder="Registre su Direccion" name="direccion">
+            <input type="text" class="form-control" id="direccion" placeholder="Registre su Direccion" name="direccion" value="<?php echo $direccion; ?>">
         </div>
         <div class="form-group">
             <label for="correo">Correo:</label>
@@ -178,66 +129,8 @@
                 }
             ?>
         </div>
-        <div class="form-group">
-            <label for="diasAtencion">Días de atención:</label>
-            <select class="form-control selectpicker" name="horarios[]" id="horarios" multiple>
-                <option value="1">Lunes</option>
-                <option value="2">Martes</option>
-                <option value="3">Miércoles</option>
-                <option value="4">Jueves</option>
-                <option value="5">Viernes</option>
-                <option value="6">Sábado</option>
-                <option value="7">Domingo</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <h5>Horario atencion</h5>
-            <label for="desde_hora">Desde(horas)</label>
-            <select class="select_custom_styles" name="desde_hora" id="desde_hora">
-                <?php 
-                    for ($i=5; $i < 24; $i++) { 
-                        echo "<option value=".($i+1).">".($i+1)."</option>";
-                    }
-                ?>
-            </select>
-            <label for="hasta_hora">Desde(min)</label>
-            <input type="number" class="number_custom_styles" name="min_desde" id="min_desde" max="60" min="0" maxlength="2"
-                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-            >
-        </div>
-        <div class="form-group">
-            <label for="hasta_hora">Hasta(horas)</label>
-            <select  class="select_custom_styles" name="hasta_hora" id="hasta_hora">
-                <?php 
-                    for ($i=6; $i < 24; $i++) { 
-                        echo "<option value=".($i+1).">".($i+1)."</option>";
-                    }
-                ?>
-            </select>
-            <label for="min_hasta">Hasta(min)</label>
-            <input type="number" class="number_custom_styles" name="min_hasta" id="min_hasta" max="60" min="0"  maxlength="2"
-                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-            >
-        </div>
-        <div class="form-group">
-            <label for="formaspago">Formas de pago admitidas:</label>
-            <select class="form-control selectpicker" name="formaspago[]" id="formaspago" multiple>
-                <?php 
-                    $xquery = "SELECT * FROM formas_pago";
-                    $xstatment = $conexion->prepare($xquery);
-                    $xstatment->execute();
-                    $xresult = $xstatment->fetchAll();
-                    foreach ($xresult as $key => $forma_pago) {
-                        $id = $forma_pago['id'];
-                        $descripcion = $forma_pago['descripcion'];
-                        echo "<option value=".$id.">".$descripcion."</option>";
-                    }
-                ?>
-            </select>
-            <input  type='hidden' id='strings_pagos' name='strings_pagos'/>
-        </div>
-        <div id="btnGuardar"><button type="submit" class="btn btn-primary">Guardar</button></div>
+        <div id="btnGuardar" class="d-flex justify-content-center"><button type="submit" class="btn btn-info">Actualizar</button></div>
     </form> 
 </div>
-
+<script src="./assets/js/validacion-mod-empresa.js"></script>
 <?php include_once 'partials/footer.php'; ?>

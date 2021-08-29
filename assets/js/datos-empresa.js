@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded', () =>{
+    const form_modificar_registro = document.getElementById('form_modificar_registro');
     const form_registrar_empresa = document.getElementById('form_registrar_empresa');
     form_registrar_empresa.addEventListener('submit', e =>{
         fillInputFormasPago();
         validacion(e);
+    });
+    form_modificar_registro.addEventListener('submit', e =>{
+        validacionModificacion(e);
     });
     const fillInputFormasPago = (e) =>{
         const filter_option_inner_inner = document.getElementsByClassName('filter-option-inner-inner');
@@ -96,6 +100,58 @@ document.addEventListener('DOMContentLoaded', () =>{
             );
             return;
         }
+        if(document.getElementById('direccion').value ===''){
+            Swal.fire(
+                'Validate Form',
+                'Debe colocar una Direccion',
+                'warning'
+            );
+            return;
+        }
         form_registrar_empresa.submit();
+    }
+    const validacionModificacion = (e) =>{
+        e.preventDefault();
+        if(document.getElementById('nom_empresa').value ===''){
+            Swal.fire(
+                'Validate Form',
+                'Debe colocar un nombre de la empresa',
+                'warning'
+            );
+            return;
+        }
+        if(document.getElementById('ruc').value ===''){
+            Swal.fire(
+                'Validate Form',
+                'Debe colocar un RUC de la empresa',
+                'warning'
+            );
+            return;
+        }
+        if(document.getElementById('correo').value ===''){
+            Swal.fire(
+                'Validate Form',
+                'Debe colocar un Correo de la empresa',
+                'warning'
+            );
+            return;
+        }
+        if(document.getElementById('telefono').value ===''){
+            Swal.fire(
+                'Validate Form',
+                'Debe colocar un Correo de la empresa',
+                'warning'
+            );
+            return;
+        }
+        if(document.getElementById('direccion').value ===''){
+            Swal.fire(
+                'Validate Form',
+                'Debe colocar una Direccion',
+                'warning'
+            );
+            return;
+        }
+        form_modificar_registro.submit();
     }
 });

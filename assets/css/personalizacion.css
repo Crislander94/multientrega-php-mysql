@@ -27,6 +27,9 @@ body{
 .contenido.contenido_main{
     width: 70%;
 }
+.contenido_table{
+  width: 85%;
+}
 div.item-search {
   text-align: end;
   background-color: #282A35;

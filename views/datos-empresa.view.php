@@ -18,7 +18,7 @@
           </button>
         </div>
     <?php
-        unset($_SESSION['success']);
+        unset($_SESSION['success_mod']);
         endif; 
     ?>
     <h1 class="text-center">Informacion de la empresa</h1>

@@ -9,7 +9,6 @@
     <script src="./assets/libs/popper/popper.min.js"></script>
     <script src="./assets/libs/bootstrap-4.6.0-dist/js/bootstrap.js"></script>
     <script src="./assets/libs/bootstrap-select-1.13.1/js/bootstrap-select.js"></script>
-    <script src="./assets/js/datos-empresa.js"></script>
     <!-- <script src="./assets/js/validacion-empresa.js"></script> -->
   </body>
 </html>

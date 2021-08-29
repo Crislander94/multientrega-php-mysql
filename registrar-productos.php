@@ -2,9 +2,6 @@
     require_once 'verificar.php';
     include_once '/partials/cabecera.php';
     include_once '/partials/menu.php';
-
-
-    
 ?>
 <div class="contenido contenido_main">
     <form action="/action_page.php" class="needs-validation" style="margin-bottom: 1rem;" novalidate>
@@ -38,7 +35,7 @@
         <label for="disponibilidad">Disponibilidad:</label>
         <input type="number" class="form-control" id="disponibilidad" placeholder="Números de existencias" name="disponibilidad" required>
       </div>
-      <div id="btnGuardar"><button type="submit" class="btn btn-primary">Guardar</button></div>
+      <div id="btnGuardar"><button type="submit" class="btn btn-info">Guardar</button></div>
     </form>
 </div>
 
