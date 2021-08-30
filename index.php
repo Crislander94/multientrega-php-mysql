@@ -3,8 +3,8 @@
     require_once 'verificar.php';
     include_once 'partials/menu.php';
     include_once 'partials/cabecera.php';
-    if(!isset($_SESSION["cod_empresa"])) header('Location: registrar-empresa.php');
     //If el usuario no tiene empresa que la registre....
+    if(!isset($_SESSION["cod_empresa"])) header('Location: registrar-empresa.php');
     //Consulta SQL para traer los datos de la empresa
     //Traemos los datos de la empresa
     require_once 'db/conexion.php';

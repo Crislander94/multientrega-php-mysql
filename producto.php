@@ -6,9 +6,6 @@
     $db = new DBClass();
     $conexion  = $db->getconnection();
     require_once 'core/routes.php';
-    // Renderiza la vista para listar los productos
-    // $producto->index($conexion, $_SESSION['cod_empresa']);
-
     //Cargar el controlador correspondiente y cargar la accion por GET
     if(isset($_GET['c'])){
         $controller = loadController($_GET['c']);

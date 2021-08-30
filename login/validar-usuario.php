@@ -1,5 +1,4 @@
 <?php 
-    //validate users
     /*
         Verifica que el usuario se encuentre en nuestros registros....
     */
