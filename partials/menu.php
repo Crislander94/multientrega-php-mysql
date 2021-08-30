@@ -24,8 +24,6 @@
                     <a class="dropdown-item" href="<?php echo RUTA.'mod-empresa.php'; ?>">Modificar su informacion</a>
                     <a class="dropdown-item" href="<?php echo RUTA.'producto.php'; ?>">Productos</a>
                     <a class="dropdown-item" href="<?php echo RUTA.'control-pedidos.php'; ?>">Control de los pedidos</a>
-                    <a class="dropdown-item" href="<?php echo RUTA.'control-pedidos-pendientes.php'; ?>">Control de los pedidos Pendientes</a>
-                    <a class="dropdown-item" href="<?php echo RUTA.'control-pedidos-completados.php'; ?>">Control de los pedidos Completados</a>
                 <?php endif;?>
             </div>
         </li>
