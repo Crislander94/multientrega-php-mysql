@@ -21,6 +21,7 @@
         unset($_SESSION['success_mod']);
         endif; 
     ?>
+    <input type="hidden" id="estado_empresa" value="<?php echo $_SESSION['estado_empresa']?>">
     <h1 class="text-center">Informacion de la empresa</h1>
     <div>
       <div class="form-group">
@@ -68,3 +69,5 @@
       </div>
     </div> 
 </div>
+
+<script src="./assets/js/status-empresa.js"></script>

@@ -11,7 +11,7 @@
                   where 
                       cod_empresa = '".$cod_empresa."'
                   and
-                      st_producto = 'A' 
+                      st_producto != 'X' 
                   and
                       id = '".$_GET['id']."'
                   ";

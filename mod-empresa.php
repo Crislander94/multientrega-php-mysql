@@ -4,12 +4,17 @@
     include_once 'partials/cabecera.php';
     include_once 'partials/menu.php';
     include_once 'db/conexion.php';
+    if(isset($_SESSION["tipo_usuario"])){
+        if($_SESSION["tipo_usuario"] === 'A') header('Location: admin.php');
+        if($_SESSION["tipo_usuario"] === 'R') header('Location: repartidor.php');
+        if($_SESSION["tipo_usuario"] === 'C') header('Location: cliente.php');
+    } 
     if(!isset($_SESSION["cod_empresa"])) header('Location: registrar-empresa.php');
     //Abrimos la conexion...
     require_once 'db/conexion.php';
     $dbClass = new DBClass();
     $conexion = $dbClass->getconnection();
-    $sql = "Select 
+    $sql = "Select
             e.cod_empresa, e.nom_empresa, e.ruc, e.correo, e.telefono, e.direccion, e.formas_pago, e.tipo, 
             te.descripcion as tipo_empresa,
             h.dias, h.horas

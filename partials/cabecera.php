@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="./assets/css/personalizacion.css">
 </head>
 <body>
-    <div class="item-search">
+    <div class="item-search p-2">
         <form class="form-inline" action="/action_page.php">
           <input class="form-control mr-sm-2" type="search" placeholder="¿Que desea buscar?">
         </form>

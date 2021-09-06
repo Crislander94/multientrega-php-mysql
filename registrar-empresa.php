@@ -4,6 +4,11 @@
     include_once 'partials/cabecera.php';
     include_once 'partials/menu.php';
     include_once 'db/conexion.php';
+    if(isset($_SESSION["tipo_usuario"])){
+        if($_SESSION["tipo_usuario"] === 'A') header('Location: admin.php');
+        if($_SESSION["tipo_usuario"] === 'R') header('Location: repartidor.php');
+        if($_SESSION["tipo_usuario"] === 'C') header('Location: cliente.php');
+    } 
     if(isset($_SESSION["cod_empresa"])) header('Location: index.php');
     //Abrimos la conexion...
     $dbClass = new DBClass();

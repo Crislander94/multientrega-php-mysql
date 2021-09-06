@@ -4,7 +4,7 @@ class Productos_model {
     private $productos;
     public function __construct($conexion){
         $this->db = $conexion;
-        $this->prodcutos = array();
+        $this->productos = array();
     }
     public function getProducts($cod_empresa) {
         $query = "Select 
@@ -13,10 +13,12 @@ class Productos_model {
                 case p.st_producto  
                     when 'A' then 'Activo'
                     when 'I' then 'Inactivo'
+                    when 'P' then 'Pendiente'
                 end as estado,
                 case p.st_producto  
                     when 'A' then 'success'
                     when 'I' then 'danger'
+                    when 'P' then 'info'
                 end as color_estado,
                 c.descripcion as categoria
                 from productos p inner join categorias c on
@@ -24,7 +26,7 @@ class Productos_model {
                 where 
                     p.cod_empresa = '".$cod_empresa."'
                 and
-                    p.st_producto = 'A' ";
+                    p.st_producto != 'X' ";
         $statment = $this->db->prepare($query);
         $statment->execute();
         $this->productos = $statment->fetchAll();
@@ -58,7 +60,7 @@ class Productos_model {
     }
     public function insertProduct($nom_product, $precio, $disponibilidad, $ofertas, $categoria, $cod_usuario,$cod_empresa){
         $query = "INSERT INTO productos(nom_producto,precio,disponibilidad,ofertas,categoria,st_producto, cod_empresa, created_by)
-                      VALUES('$nom_product','$precio', '$disponibilidad','$ofertas', '$categoria', 'A','$cod_empresa','$cod_usuario')";
+                      VALUES('$nom_product','$precio', '$disponibilidad','$ofertas', '$categoria', 'P','$cod_empresa','$cod_usuario')";
         try{
             //Iniciamos la transaccion
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

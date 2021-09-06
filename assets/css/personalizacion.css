@@ -29,6 +29,7 @@ body{
 }
 .contenido_table{
   width: 85%;
+  margin-left: 8.5em !important;
 }
 div.item-search {
   text-align: end;
@@ -53,4 +54,11 @@ div.item-search {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color .3s ease;
+}
+.title_menu{
+  color: #fff;
+  font-weight: bold;
+  cursor:unset;
+  padding: 2px 8px !important;
+  margin: 0px !important;
 }

@@ -106,5 +106,4 @@ document.addEventListener('DOMContentLoaded', () =>{
         }
         form_registrar_empresa.submit();
     }
-    
 });

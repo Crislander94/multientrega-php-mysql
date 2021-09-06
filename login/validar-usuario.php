@@ -21,6 +21,17 @@
                 $_SESSION['username'] = $result[0]['username']; 
                 $_SESSION['cod_usuario'] = $result[0]['id'];
                 $_SESSION['cod_empresa'] = $result[0]['cod_empresa'];
+                $_SESSION['tipo_usuario'] = $result[0]['tipo_usuario'];
+
+                if($result[0]['cod_empresa'] != null){
+                    $xsql = "Select st_empresa
+                            from empresa 
+                            where cod_empresa = '".$_SESSION['cod_empresa']."'";
+                    $xstatment = $conexion->prepare($xsql);
+                    $xstatment->execute();
+                    $xresult = $xstatment->fetchAll();
+                    $_SESSION["estado_empresa"] = $xresult[0]['st_empresa'];
+                }
                 header('Location: ../index.php');
             }else{
                 $_SESSION['error'] = true;
