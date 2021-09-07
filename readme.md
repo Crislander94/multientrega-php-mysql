@@ -10,7 +10,7 @@ que ofrecen sus productos, se requiere como mínimo:
 •	Control de los pedidos cancelados y completados: fecha, cliente, 
     productos, valor, ganancia (un porcentaje corresponde a la empresa dueña
      de la página web).
-
+```
 
 ```
 4.- Una aplicación web Multi-Entrega Bajo Demanda (entregas de Productos, cosas o artefactos) de un lugar a otro según lo soliciten los Clientes.
