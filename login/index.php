@@ -12,22 +12,22 @@
     <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="stylesheet" href="../assets/css/personalizacion.css">
 </head>
-      <?php if(isset($_SESSION['error'])) : ?>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          El usuario no se encuentra en nuestros registros
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <?php
-        unset($_SESSION['error']);
-        endif; 
-      ?>
 <body class="bg-light" style="margin-left: 0px !important;">
   <nav class="card p-2" style="border-bottom: 1px solid rgba(0,0,0,.1)">
     <a class="navbar-brand" style="color:#000;" href="#">MULTI-ENTREGA</a>
   </nav>
   <hr style="color:#000; opacity: .4">
+  <?php if(isset($_SESSION['error'])) : ?>
+      <div class="alert alert-danger alert-dismissible fade show mx-auto mb-4 w-50" role="alert">
+        El usuario no se encuentra en nuestros registros
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  <?php
+    unset($_SESSION['error']);
+    endif; 
+  ?>
   <section id="cabeza" class="text-white font-weigth-bold">
     <div class="row m-0">
       <section class="form-login">

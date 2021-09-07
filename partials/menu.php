@@ -32,9 +32,9 @@
                     <!-- Menu para Administración -->
                     <?php if($_SESSION["tipo_usuario"] === 'A'): ?>
                         <p class="title_menu">Administracion</p>
-                        <a class="dropdown-item" href="<?php echo RUTA.'mod-empresa.php'; ?>"><i class="fas fa-mug-hot mr-1"></i>Administrar Clientes</a>
-                        <a class="dropdown-item" href="<?php echo RUTA.'producto.php'; ?>"><i class="fas fa-building mr-1"></i>Administrar Empresas</a>
-                        <a class="dropdown-item" href="<?php echo RUTA.'control-pedidos.php'; ?>"><i class="fas fa-truck mr-1"></i>Administrar Repartidores</a>
+                        <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminClient'; ?>"><i class="fas fa-mug-hot mr-1"></i>Administrar Clientes</a>
+                        <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminDelivery'; ?>"><i class="fas fa-building mr-1"></i>Administrar Empresas</a>
+                        <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminEnterprise'; ?>"><i class="fas fa-truck mr-1"></i>Administrar Repartidores</a>
                     <?php endif; ?>
                 </li>
             <?php endif; ?>

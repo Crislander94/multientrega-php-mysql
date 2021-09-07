@@ -83,6 +83,5 @@
             }else{
                 header('Location: producto.php');
             }
-
         }
     }

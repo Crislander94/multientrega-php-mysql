@@ -4,7 +4,7 @@
     require_once 'verificar.php';
     include_once 'partials/menu.php';
     include_once 'partials/cabecera.php';
-    require_once 'core/routes.php';
+    require_once 'core/routes_admin.php';
     require_once 'db/conexion.php';
     $db = new DBClass();
     $conexion  = $db->getconnection();
