@@ -66,8 +66,67 @@
                 return false;
             }
         }
+
+
+
         public function getGestionDeliverys(){
-            
+            $sql = "SELECT 
+                    cod_repartidor,
+                    nombres, 
+                    RUC, created_at as fecha_creacion
+                    from repartidores
+                    where st_repartidor = 'P' ";
+            $statment = $this->db->prepare($sql);
+            $statment->execute();
+            $this->admin = $statment->fetchAll();
+            return $this->admin;
+        }
+        public function getDetailsDelivery($id){
+
+            $sql = "SELECT 
+                    nombres, 
+                    RUC, 
+                    correo, 
+                    telefono, horario_disponible, medio_transporte 
+                    from repartidores
+                    where st_repartidor = 'P' and RUC = '$id'";
+            $statment = $this->db->prepare($sql);
+            $statment->execute();
+            $this->admin = $statment->fetchAll();
+            return $this->admin;
+        }
+
+        public function approveDelivery($id){
+            $sql ="update repartidores set st_repartidor = 'A' where RUC = '$id'";
+            try{
+                //Iniciamos la transaccion
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db->beginTransaction();
+                //Ejecutamos el query
+                $this->db->exec($sql);
+                $this->db->commit();
+                return true;
+            }catch(Exception $e){
+                echo $e->getMessage();
+                $this->db->rollBack();
+                return false;
+            }
+        }
+        public function disclaimerDelivery($id){
+            $sql ="update repartidores set st_repartidor = 'X' where RUC = '$id'";
+            try{
+                //Iniciamos la transaccion
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db->beginTransaction();
+                //Ejecutamos el query
+                $this->db->exec($sql);
+                $this->db->commit();
+                return true;
+            }catch(Exception $e){
+                echo $e->getMessage();
+                $this->db->rollBack();
+                return false;
+            }
         }
         public function getGestionEnterprise(){
             $sql = "";

@@ -28,7 +28,7 @@
 ?>
 <div class="contenido contenido_main">
     <form action="<?php echo RUTA.'producto.php?c=producto&a=update'?>" method="POST" class="needs-validation" id="registar_producto" style="margin-bottom: 1rem;">
-      <h3 class="text-center">Registar nuevo producto</h3>
+      <h3 class="text-center">Modificar producto</h3>
       <div class="form-group">
         <label for="tuscategorias">Categorias:</label>
         <select class="form-control selectpicker" id="tuscategorias" name="categoria">

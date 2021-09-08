@@ -1,4 +1,18 @@
 <div class="contenido">
+                <!-- Alertas -->
+    <!-- ================================================= -->
+    <?php if(isset($_SESSION['empty'])) : ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          Verificar que las credenciales del repartidor estén correctamente enviadas al servidor.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    <?php
+        unset($_SESSION['empty']);
+        endif; 
+    ?>
+    <!-- ================================================= -->
     <h2 class="title_details">Usuario: <?php echo $nombre ?></h2>
     <form id="form1" method="POST">
         <div class="row">
@@ -44,18 +58,15 @@
                 </div>
             </div>
             <div class="col-12 d-flex justify-content-center">
-                <a href="<?php echo RUTA?>admin.php?c=admin&a=approveClient&id=<?php echo $id?>" class="btn btn-success">Aprobar Cliente</a>
-                <a href="<?php echo RUTA?>admin.php?c=admin&a=disclaimerClient&id=<?php echo $id?>" class="btn btn-danger ml-2">Cancelar Cliente</a>
+                <?php if($identificacion === ''): ?>
+                    <a href="<?php echo RUTA?>admin.php?c=admin&a=renderAdminClient" class="btn btn-info">Regresar</a>
+                <?php else: ?>
+                    <a href="<?php echo RUTA?>admin.php?c=admin&a=approveClient&id=<?php echo $id?>" class="btn btn-success">Aprobar Cliente</a>
+                    <a href="<?php echo RUTA?>admin.php?c=admin&a=disclaimerClient&id=<?php echo $id?>" class="btn btn-danger ml-2">Cancelar Cliente</a>
+                <?php endif; ?>
             </div>
         </div>
     </form>
 </div>
 
-
-
-<script>
-    const form1 = document.getElementById('form1');
-    form1.addEventListener('submit' , (e) => {
-        e.preventDefault();
-    })
-</script>
+<?php include 'partials/footer.php' ?>

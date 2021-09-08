@@ -19,11 +19,20 @@
             $id = $_REQUEST['id'];
             $admin  = new adminModel($conexion);
             $data = $admin->getDetailsClient($id);
-            $nombre = $data[0]["nombres"];
-            $identificacion = $data[0]["identificacion"];
-            $correo = $data[0]["correo"];
-            $telefono = $data[0]["telefono"];
-            $metodo_pago = $data[0]["metodo_pago"];
+            if(!empty($data)){
+                $nombre = $data[0]["nombres"];
+                $identificacion = $data[0]["identificacion"];
+                $correo = $data[0]["correo"];
+                $telefono = $data[0]["telefono"];
+                $metodo_pago = $data[0]["metodo_pago"];
+            }else{
+                $nombre = "";
+                $identificacion = "";
+                $correo = "";
+                $telefono = "";
+                $metodo_pago = "";
+                $_SESSION['empty'] = true;
+            }
             //Traemos la vista para renderizar el cliente....
             require_once "views/detailsClient.view.php";
         }
@@ -55,13 +64,64 @@
         public function renderAdminDelivery($conexion){
             require_once "models/adminModel.php";
             $admin  = new adminModel($conexion);
+            $data["repartidores"] = $admin->getGestionDeliverys();
             //El modelo me traera los Repartidores a administrar
             require_once "views/adminRepartidores.view.php";
         }
 
         public function getDetailsDelivery($conexion){
-
+            require_once "models/adminModel.php";
+            $id = $_REQUEST['id'];
+            $admin  = new adminModel($conexion);
+            $data = $admin->getDetailsDelivery($id);
+            if(!empty($data)){
+                $nombre = $data[0]["nombres"];
+                $identificacion = $data[0]["RUC"];
+                $correo = $data[0]["correo"];
+                $telefono = $data[0]["telefono"];
+                $horario = $data[0]["horario_disponible"];
+                $dias = explode(";", $horario)[0];
+                $horas = explode(";", $horario)[1];
+                $medio_transporte = $data[0]["medio_transporte"];
+            }else{
+                $nombre = "";
+                $identificacion = "";
+                $correo = "";
+                $telefono = "";
+                $dias = "";
+                $horas = "";
+                $medio_transporte = "";
+                $_SESSION['empty']  = true;
+            }
+            //Traemos la vista para renderizar al repartidor....
+            require_once "views/detailsDelivery.view.php";
         }
+
+        public function approveDelivery($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST['id'];
+            $admin  = new adminModel($conexion);
+            $result = $admin->approveDelivery($id);
+            if(!$result){
+                $_SESSION['error_aprrove'] = true;
+            }else{
+                $_SESSION['success_approve'] = true;
+            }
+            header('Location: admin.php?c=admin&a=renderAdminDelivery');
+        }
+        public function disclaimerDelivery($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST['id'];
+            $admin  = new adminModel($conexion);
+            $result = $admin->disclaimerDelivery($id);
+            if(!$result){
+                $_SESSION['error_disclaimer'] = true;
+            }else{
+                $_SESSION['success_disclaimer'] = true;
+            }
+            header('Location: admin.php?c=admin&a=renderAdminDelivery');
+        }
+
         public function renderAdminEnterprise($conexion){
             require_once "models/adminModel.php";
             $admin  = new adminModel($conexion);

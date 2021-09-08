@@ -5,8 +5,8 @@
     define('RUTA', $ruta_final);
 
     //Definiendo Rutas por default de los controladores
-    define("CONTROLLER_MAIN", 'producto');
+    define("CONTROLLER_MAIN", 'Producto');
     define("ACTION_MAIN", 'index');
     //Definiendo Rutas por default de los controladores
-    define("CONTROLLER_MAIN_ADMIN", 'admin');
+    define("CONTROLLER_MAIN_ADMIN", 'Admin');
 ?>

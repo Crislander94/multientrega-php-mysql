@@ -80,9 +80,9 @@
                     </tr>
                 <?php else : ?>
                     <?php foreach($data["clientes"] as $key => $cliente){
-                        $array_meses  = ["Enero", "Febero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Noviembre", "Diciembre"];
+                        $array_meses  = ["Enero", "Febero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre","Octubre", "Noviembre", "Diciembre"];
                         $fecha_final = explode(" ",$cliente["fecha_creacion"])[0];
-                        $fecha_final = explode("-", $fecha_final)[1].'/'.$array_meses[(explode("-",$fecha_final)[2])+1]."/".explode("-", $fecha_final)[0];
+                        $fecha_final = explode("-", $fecha_final)[2].'/'.$array_meses[(explode("-",$fecha_final)[1])-1]."/".explode("-", $fecha_final)[0];
                     ?>
                     <tr>
                         <td><?php echo ($key+1); ?></td>
