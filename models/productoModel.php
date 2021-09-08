@@ -71,7 +71,7 @@ class Productos_model {
             return true;
         }catch(Exception $e){
             echo $e->getMessage();
-            $conexion->rollBack();
+            $this->db->rollBack();
             return false;
         }
     }
@@ -99,7 +99,7 @@ class Productos_model {
             return true;
         }catch(Exception $e){
             echo $e->getMessage();
-            $conexion->rollBack();
+            $this->db->rollBack();
             return false;
         }
     }

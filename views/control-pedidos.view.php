@@ -39,7 +39,14 @@
             <?php if(count($result) === 0) : ?>
                 <tbody>
                     <tr>
-                        <td colspan="8"><center><span>No se han encontrado resultados..</span></center></td>
+                        <td colspan="8" class="text-center py-4">
+                            <div class="container_thumb_center d-flex justify-content-center mb-4">
+                                <div class="thumb_lg">
+                                    <img src="assets/img/not_found.svg" alt="#Not Found" class="img_thumb">
+                                </div>
+                            </div>
+                            <span style="font-style:italic;">No se han encontrado pedidos</span>
+                        </td>
                     </tr>
                 </tbody>
             <?php else : ?>

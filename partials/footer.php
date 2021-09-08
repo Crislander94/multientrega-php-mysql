@@ -9,6 +9,14 @@
     <script src="./assets/libs/bootstrap-4.6.0-dist/js/bootstrap.js"></script>
     <script src="./assets/libs/sweetAlert2/sweetalert2.all.min.js"></script>
     <script src="./assets/libs/bootstrap-select-1.13.1/js/bootstrap-select.js"></script>
+
+
+    <!-- INICIALIZANDO LOS TOOLTIPS -->
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
     <!-- <script src="./assets/js/validacion-empresa.js"></script> -->
   </body>
 </html>
