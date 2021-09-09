@@ -85,8 +85,18 @@ div.item-search {
   text-align: center;
   text-shadow: 0px 1px 8px rgba(0, 0, 0, .7);
 }
+.custom_input_single{
+  max-width: 30%;
+}
+.custom_modal_dialog{
+  translate: 0% 67%;
+  padding-bottom: 20px;
+}
 @media screen and (max-width: 767px){
   .contenido{
     padding:  0 60px !important;
+  }
+  .custom_input_single{
+    max-width: 100%;
   }
 }

@@ -3,7 +3,7 @@
     <!-- ================================================= -->
     <?php if(isset($_SESSION['empty'])) : ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          Verificar que las credenciales del repartidor estén correctamente enviadas al servidor.
+          Verificar que las credenciales del cliente estén correctamente enviadas al servidor.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -18,7 +18,7 @@
         <div class="row">
             <div class="container_thumb_center mb-4 col-12 d-flex justify-content-center">
                 <div class="thumb">
-                    <img class="img_thumb" src="assets/img/admin_profile.svg" alt="#Administracion usuario">
+                    <img class="img_thumb" src="assets/img/admin_profile.svg" alt="#Administracion Cliente">
                 </div>
             </div>
             <div class="col-md-6 col-12 mb-4">

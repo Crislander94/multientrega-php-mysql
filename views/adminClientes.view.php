@@ -1,5 +1,4 @@
 <div class="contenido">
-
                         <!-- Alertas -->
     <!-- ================================================= -->
     <?php if(isset($_SESSION['success_approve'])) : ?>
@@ -22,7 +21,7 @@
         </div>
     <?php
         unset($_SESSION['success_disclaimer']);
-        endif; 
+        endif;
     ?>
 
 

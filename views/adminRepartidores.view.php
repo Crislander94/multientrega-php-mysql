@@ -1,5 +1,4 @@
 <div class="contenido">
-
                         <!-- Alertas -->
     <!-- ================================================= -->
     <?php if(isset($_SESSION['success_approve'])) : ?>

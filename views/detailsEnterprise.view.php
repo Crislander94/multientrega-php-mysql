@@ -4,7 +4,7 @@
     <!-- ================================================= -->
     <?php if(isset($_SESSION['empty'])) : ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          Verificar que las credenciales del repartidor estén correctamente enviadas al servidor.
+          Verificar que las credenciales de la empresa estén correctamente enviadas al servidor.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -14,12 +14,12 @@
         endif; 
     ?>
     <!-- ================================================= -->
-    <h2 class="title_details">Repartidor: <?php echo $nombre ?></h2>
+    <h2 class="title_details">Empresa: <?php echo $nombre ?></h2>
     <form id="form1" method="POST">
         <div class="row">
             <div class="container_thumb_center mb-4 col-12 d-flex justify-content-center">
                 <div class="thumb">
-                    <img class="img_thumb" src="assets/img/admin_delivery.svg" alt="#Administracion Repartidor">
+                    <img class="img_thumb" src="assets/img/admin_enterprise.svg" alt="#Administracion Empresa">
                 </div>
             </div>
             <div class="col-md-6 col-12 mb-4">
@@ -50,9 +50,9 @@
                 </div>
             </div>
             <div class="col-md-6 col-12 mb-4">
-                <label for="" class="">Medio de transporte:</label>
+                <label for="" class="">Metodos de pago:</label>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" disabled  value="<?php echo $medio_transporte ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <input type="text" class="form-control" disabled  value="<?php echo $metodos_pago ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <span class="input-group-text" id="button-addon2"><i class="fas fa-credit-card"></i></span>
                     </div>
@@ -79,12 +79,21 @@
                     </div>
                 </div>
             </div>
+            <div class="col-12 d-flex justify-content-center flex-wrap mb-4">
+                <label for="" class="">Tipo:</label>
+                <div class="input-group d-flex justify-content-center mb-3">
+                    <input type="text" class="form-control custom_input_single" disabled  value="<?php echo $tipo; ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="button-addon2"><i class="fas fa-building"></i></span>
+                    </div>
+                </div>
+            </div>
             <div class="col-12 d-flex justify-content-center">
                 <?php if($identificacion === ''): ?>
-                    <a href="<?php echo RUTA?>admin.php?c=admin&a=renderAdminDelivery" class="btn btn-info">Regresar</a>
+                    <a href="<?php echo RUTA?>admin.php?c=admin&a=renderAdminEnterprise" class="btn btn-info">Regresar</a>
                 <?php else: ?>
-                    <a href="<?php echo RUTA?>admin.php?c=admin&a=approveDelivery&id=<?php echo $id?>" class="btn btn-success">Aprobar Repartidor</a>
-                    <a href="<?php echo RUTA?>admin.php?c=admin&a=disclaimerDelivery&id=<?php echo $id?>" class="btn btn-danger ml-2">Cancelar Repartidor</a>
+                    <a href="<?php echo RUTA?>admin.php?c=admin&a=approveEnterprise&id=<?php echo $id?>" class="btn btn-success">Aprobar Empresa</a>
+                    <a href="<?php echo RUTA?>admin.php?c=admin&a=disclaimerEnterprise&id=<?php echo $id?>" class="btn btn-danger ml-2">Cancelar Empresa</a>
                 <?php endif; ?>
             </div>
         </div>

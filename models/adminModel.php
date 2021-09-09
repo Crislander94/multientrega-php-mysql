@@ -67,8 +67,6 @@
             }
         }
 
-
-
         public function getGestionDeliverys(){
             $sql = "SELECT 
                     cod_repartidor,
@@ -129,8 +127,106 @@
             }
         }
         public function getGestionEnterprise(){
-            $sql = "";
+            $sql = "select cod_empresa, nom_empresa, ruc, created_at as fecha_creacion
+            from empresa where st_empresa = 'P'";
+            $statment = $this->db->prepare($sql);
+            $statment->execute();
+            $this->admin = $statment->fetchAll();
+            return $this->admin;
         }
+        public function getDetailsEnterprise($id){
+            $sql = "select e.cod_empresa,e.nom_empresa, e.ruc, e.correo,
+                e.telefono, e.direccion, e.formas_pago,
+                h.dias, h.horas, t.descripcion as tipo_empresa
+                from empresa e
+                inner join tipo_empresa t on t.id = e.tipo
+                inner join horarios h on h.id = e.cod_empresa
+                where e.st_empresa = 'P'
+                and e.cod_empresa = '$id' ";
+            $statment = $this->db->prepare($sql);
+            $statment->execute();
+            $this->admin = $statment->fetchAll();
+            return $this->admin;
+        }
+        public function approveEnterprise($id){
+            $sql = "update empresa set st_empresa = 'A' where cod_empresa = '$id'";
+            try{
+                //Iniciamos la transaccion
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db->beginTransaction();
+                //Ejecutamos el query
+                $this->db->exec($sql);
+                $this->db->commit();
+                return true;
+            }catch(Exception $e){
+                echo $e->getMessage();
+                $this->db->rollBack();
+                return false;
+            }
+        }
+        public function disclaimerEnterprise($id){
+            $sql = "update empresa set st_empresa = 'X' where cod_empresa = '$id'";
+            try{
+                //Iniciamos la transaccion
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db->beginTransaction();
+                //Ejecutamos el query
+                $this->db->exec($sql);
+                $this->db->commit();
+                return true;
+            }catch(Exception $e){
+                echo $e->getMessage();
+                $this->db->rollBack();
+                return false;
+            }
+        }
+
+
+
+        public function getDetailsProduct($id,$cod_empresa){
+            $sql = "select p.nom_producto, p.precio, p.disponibilidad, p.ofertas, c.descripcion as categoria
+                    from productos p inner join categorias c on c.id=p.categoria
+                    where p.id = '$id'
+                    and cod_empresa = '$cod_empresa'
+                    and p.st_producto = 'P'";
+            $statment = $this->db->prepare($sql);
+            $statment->execute();
+            $this->admin = $statment->fetchAll();
+            return $this->admin;
+        }
+        public function approveProduct($id,$cod_empresa){
+            $sql = "update productos set st_producto = 'A' where cod_empresa = '$cod_empresa' and id = '$id'";
+            try{
+                //Iniciamos la transaccion
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db->beginTransaction();
+                //Ejecutamos el query
+                $this->db->exec($sql);
+                $this->db->commit();
+                return true;
+            }catch(Exception $e){
+                echo $e->getMessage();
+                $this->db->rollBack();
+                return false;
+            }
+        }
+        public function disclaimerProduct($id,$cod_empresa){
+            $sql = "update productos set st_producto = 'X' where cod_empresa = '$cod_empresa' and id = '$id'";
+            try{
+                //Iniciamos la transaccion
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db->beginTransaction();
+                //Ejecutamos el query
+                $this->db->exec($sql);
+                $this->db->commit();
+                return true;
+            }catch(Exception $e){
+                echo $e->getMessage();
+                $this->db->rollBack();
+                return false;
+            }
+        }
+
         public function getGestionProductosByEnterprise(){
             $sql = "";
         }

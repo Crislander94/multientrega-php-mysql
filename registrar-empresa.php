@@ -92,6 +92,7 @@
                 $conexion->exec($xyQuery);
                 $conexion->commit();
                 $_SESSION['success'] = true;
+                $_SESSION['estado_empresa'] = 'P';
                 header('Location: index.php');
             }catch(Exception $e){
                 echo $e->getMessage();

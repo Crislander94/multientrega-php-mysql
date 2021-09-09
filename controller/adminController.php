@@ -125,20 +125,120 @@
         public function renderAdminEnterprise($conexion){
             require_once "models/adminModel.php";
             $admin  = new adminModel($conexion);
-
+            $data["empresas"] = $admin->getGestionEnterprise();
             //El modelo me traera a las empresas a Administrar
             require_once "views/adminEmpresas.view.php";
         }
 
-        public function renderAdminProducts($conexion){
+
+        public function getDetailsEnterprise($conexion){
             require_once "models/adminModel.php";
+            $id = $_REQUEST['id'];
             $admin  = new adminModel($conexion);
-
-            //El modelo me traera a los productos de la empresa a Administrar
-            require_once "views/adminEmpresas.view.php";
-
+            $data = $admin->getDetailsEnterprise($id);
+            if(!empty($data)){
+                $nombre = $data[0]["nom_empresa"];
+                $identificacion = $data[0]["ruc"];
+                $correo = $data[0]["correo"];
+                $telefono = $data[0]["telefono"];
+                $dias = $data[0]["dias"];
+                $horas = $data[0]["horas"];
+                $tipo = $data[0]["tipo_empresa"];
+                $metodos_pago = $data[0]["formas_pago"];
+            }else{
+                $nombre = "";
+                $identificacion = "";
+                $correo = "";
+                $telefono = "";
+                $dias = "";
+                $horas = "";
+                $tipo = "";
+                $metodos_pago = "";
+                $_SESSION['empty']  = true;
+            }
+            //Traemos la vista para renderizar al repartidor....
+            require_once "views/detailsEnterprise.view.php";
         }
 
+        public function approveEnterprise($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST['id'];
+            $admin  = new adminModel($conexion);
+            $result = $admin->approveEnterprise($id);
+            if(!$result){
+                $_SESSION['error_aprrove'] = true;
+            }else{
+                $_SESSION['success_approve'] = true;
+            }
+            header('Location: admin.php?c=admin&a=renderAdminEnterprise');
+        }
+        public function disclaimerEnterprise($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST['id'];
+            $admin  = new adminModel($conexion);
+            $result = $admin->disclaimerEnterprise($id);
+            if(!$result){
+                $_SESSION['error_disclaimer'] = true;
+            }else{
+                $_SESSION['success_disclaimer'] = true;
+            }
+            header('Location: admin.php?c=admin&a=renderAdminEnterprise');
+        }
+        
+        public function renderAdminProducts($conexion){
+            //El modelo me traera a los productos de la empresa a Administrar
+            require_once "views/adminProductos.view.php";
+        }
+        public function getDetailsProduct($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST['id'];
+            $cod_empresa = $_REQUEST['cod_empresa'];
+            $admin  = new adminModel($conexion);
+            $data = $admin->getDetailsProduct($id,$cod_empresa);
+            if(!empty($data)){
+                $nombre = $data[0]["nom_producto"];
+                $precio = '$'.$data[0]["precio"];
+                $disponibilidad = $data[0]["disponibilidad"];
+                $ofertas = $data[0]["ofertas"].'%';
+                $categoria = $data[0]["categoria"];
+            }else{
+                $nombre = "";
+                $precio = "";
+                $disponibilidad = "";
+                $ofertas = "";
+                $categoria = "";
+                $_SESSION['empty']  = true;
+            }
+            //Traemos la vista para renderizar al producto....
+            require_once "views/detailsProduct.view.php";
+        }
+
+        public function approveProduct($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST['id'];
+            $cod_empresa = $_REQUEST['cod_empresa'];
+            $admin  = new adminModel($conexion);
+            $result = $admin->approveProduct($id,$cod_empresa);
+            if(!$result){
+                $_SESSION['error_aprrove'] = true;
+            }else{
+                $_SESSION['success_approve'] = true;
+            }
+            header('Location: admin.php?c=admin&a=renderAdminProducts');
+        }
+        public function disclaimerProduct($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST['id'];
+            $cod_empresa = $_REQUEST['cod_empresa'];
+            $admin  = new adminModel($conexion);
+            $result = $admin->disclaimerProduct($id,$cod_empresa);
+            if(!$result){
+                $_SESSION['error_disclaimer'] = true;
+            }else{
+                $_SESSION['success_disclaimer'] = true;
+            }
+            header('Location: admin.php?c=admin&a=renderAdminProducts');
+        }
         public function renderAdminPedidos($conexion){
             require_once "models/adminModel.php";
             $admin  = new adminModel($conexion);
@@ -153,6 +253,6 @@
             $admin  = new adminModel($conexion);
 
             //El modelo me traera La data para gestionar los reportes.
-            require_once "views/adminPedidos.view.php";
+            require_once "views/adminReportes.view.php";
         }
     }

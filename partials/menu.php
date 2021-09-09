@@ -36,6 +36,7 @@
                         <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminEnterprise'; ?>"><i class="fas fa-building mr-1"></i>Administrar Empresas</a>
                         <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminDelivery'; ?>"><i class="fas fa-truck mr-1"></i>Administrar Repartidores</a>
                         <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminPedidos'; ?>"><i class="fas fa-boxes mr-1"></i>Administrar Pedidos</a>
+                        <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderReportes'; ?>"><i class="fas fa-window-restore mr-1"></i>Reporeria</a>
                     <?php endif; ?>
                 </li>
             <?php endif; ?>
