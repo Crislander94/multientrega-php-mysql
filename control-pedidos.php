@@ -18,7 +18,6 @@
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(
             isset($_POST['busqueda_filtro'])
-            
         ){
             if(intval($_POST['busqueda_filtro']) === 0){$filtro = ''; $seleccion = '0';}
             if(intval($_POST['busqueda_filtro']) === 1){$filtro = "and cp.st_pedido = 'C' "; $seleccion = '1';}

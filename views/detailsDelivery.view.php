@@ -54,7 +54,7 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" disabled  value="<?php echo $medio_transporte ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <span class="input-group-text" id="button-addon2"><i class="fas fa-credit-card"></i></span>
+                        <span class="input-group-text" id="button-addon2"><i class="fas fa-route"></i></span>
                     </div>
                 </div>
             </div>

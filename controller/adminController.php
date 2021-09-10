@@ -242,9 +242,155 @@
         public function renderAdminPedidos($conexion){
             require_once "models/adminModel.php";
             $admin  = new adminModel($conexion);
-
+            $data["pedidos"] = $admin->getGestionPedidos();
             //El modelo me traera Los pedidos a administrar
             require_once "views/adminPedidos.view.php";
+        }
+        public function getDetailsPedido($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST["id"];
+            $admin  = new adminModel($conexion);
+            $data = $admin->getDetailsPedido($id);
+            if(!empty($data)){
+                $codigo_pedido = $data[0]["id"];
+                $nombre_cliente = $data[0]["nombre_cliente"];
+                $nombre_repartidor = $data[0]["nombre_repartidor"];
+                $nombre_producto = $data[0]["nom_producto"];
+                $precio = '$'.$data[0]["precio"];
+                $ofertas = $data[0]["ofertas"].'%';
+                $precio_final = '$'.$data[0]["precio_final"];
+                $medio_transporte = $data[0]["medio_transporte"];
+                $correo_repartidor = $data[0]["correo_repartidor"];
+                $ruc_repartidor = $data[0]["ruc_repartidor"];
+                $identificacion_cliente = $data[0]["identificacion_cliente"];
+                $correo_cliente = $data[0]["correo_cliente"];
+                $categoria = $data[0]["categoria"];
+                $horario = $data[0]["horario_disponible"];
+                $dias = explode(";", $horario)[0];
+                $horas = explode(";", $horario)[1];
+            }else{
+                $codigo_pedido ="";
+                $nombre_cliente = "";
+                $nombre_repartidor = "";
+                $nombre_producto = "";
+                $precio = "";
+                $ofertas = "";
+                $precio_final = "";
+                $medio_transporte = "";
+                $correo_repartidor = "";
+                $ruc_repartidor = "";
+                $identificacion_cliente = "";
+                $correo_cliente = "";
+                $categoria = "";
+                $dias = "";
+                $horas = "";
+                $_SESSION['empty']  = true;
+            }
+            //Traemos la vista para renderizar al producto....
+            require_once "views/detailsPedido.view.php";
+        }
+        public function approvePedido($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST["id"];
+            $admin  = new adminModel($conexion);
+            $result = $admin->approvePedido($id);
+            if(!$result){
+                $_SESSION['error_aprrove'] = true;
+            }else{
+                $_SESSION['success_approve'] = true;
+            }
+            header('Location: admin.php?c=admin&a=renderAdminPedidos');
+        }
+        public function disclaimerPedido($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST["id"];
+            $admin  = new adminModel($conexion);
+            $result = $admin->disclaimerPedido($id);
+            if(!$result){
+                $_SESSION['error_disclaimer'] = true;
+            }else{
+                $_SESSION['success_disclaimer'] = true;
+            }
+            header('Location: admin.php?c=admin&a=renderAdminPedidos');
+        }
+        
+
+        public function renderAdminRequestDisclaimer($conexion){
+            require_once "models/adminModel.php";
+            $admin  = new adminModel($conexion);
+            $data["pedidos"] = $admin->getGestionPedidosCancelar();
+            //El modelo me traera Los pedidos a administrar
+            require_once "views/adminRequestDisclaimer.view.php";
+        }
+
+        public function getDetailsPedidoCancelar($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST["id"];
+            $admin  = new adminModel($conexion);
+            $data = $admin->getDetailsPedidoCancelar($id);
+            if(!empty($data)){
+                $codigo_pedido = $data[0]["id"];
+                $motivo_cancelacion = $data[0]["motivo_cancelacion"];
+                $nombre_cliente = $data[0]["nombre_cliente"];
+                $nombre_repartidor = $data[0]["nombre_repartidor"];
+                $nombre_producto = $data[0]["nom_producto"];
+                $precio = '$'.$data[0]["precio"];
+                $ofertas = $data[0]["ofertas"].'%';
+                $precio_final = '$'.$data[0]["precio_final"];
+                $medio_transporte = $data[0]["medio_transporte"];
+                $correo_repartidor = $data[0]["correo_repartidor"];
+                $ruc_repartidor = $data[0]["ruc_repartidor"];
+                $identificacion_cliente = $data[0]["identificacion_cliente"];
+                $correo_cliente = $data[0]["correo_cliente"];
+                $categoria = $data[0]["categoria"];
+                $horario = $data[0]["horario_disponible"];
+                $dias = explode(";", $horario)[0];
+                $horas = explode(";", $horario)[1];
+            }else{
+                $codigo_pedido ="";
+                $motivo_cancelacion = "";
+                $nombre_cliente = "";
+                $nombre_repartidor = "";
+                $nombre_producto = "";
+                $precio = "";
+                $ofertas = "";
+                $precio_final = "";
+                $medio_transporte = "";
+                $correo_repartidor = "";
+                $ruc_repartidor = "";
+                $identificacion_cliente = "";
+                $correo_cliente = "";
+                $categoria = "";
+                $dias = "";
+                $horas = "";
+                $_SESSION['empty']  = true;
+            }
+            //Traemos la vista para renderizar al producto....
+            require_once "views/detailsRequestDisclaimer.view.php";
+        }
+        public function approvePedidoCancelar($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST["id"];
+            $admin  = new adminModel($conexion);
+            $result = $admin->approvePedidoCancelar($id);
+            if(!$result){
+                $_SESSION['error_aprrove'] = true;
+            }else{
+                $_SESSION['success_approve'] = true;
+            }
+            header('Location: admin.php?c=admin&a=renderAdminRequestDisclaimer');
+        }
+        public function disclaimerPedidoCancelar($conexion){
+            require_once "models/adminModel.php";
+            $id = $_REQUEST["id"];
+            $admin  = new adminModel($conexion);
+            $result = $admin->approvePedido($id);
+            if(!$result){
+                $_SESSION['error_disclaimer'] = true;
+            }else{
+                $_SESSION['success_disclaimer'] = true;
+            }
+            header('Location: admin.php?c=admin&a=renderAdminRequestDisclaimer');
         }
 
         public function renderReportes($conexion){

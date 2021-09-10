@@ -227,9 +227,125 @@
             }
         }
 
-        public function getGestionProductosByEnterprise(){
-            $sql = "";
+        public function getGestionPedidos(){
+            $sql = "select p.id, c.nombres as nombre_cliente,c.identificacion,p.fecha_envio as fecha_creacion, pr.nom_producto
+                    from pedidos p 
+                    inner join 
+                    clientes c on c.cod_cliente = p.cliente
+                    inner join productos pr on p.producto = pr.id
+                    where st_pedido = 'P'
+                    order by p.id ASC";
+            $statment = $this->db->prepare($sql);
+            $statment->execute();
+            $this->admin = $statment->fetchAll();
+            return $this->admin;
         }
-        
+        public function getDetailsPedido($id){
+            $sql = "select rp.horario_disponible,cat.descripcion as categoria,p.id, c.nombres as nombre_cliente,c.identificacion as identificacion_cliente,
+                    p.fecha_envio as fecha_creacion, pr.nom_producto,
+                    rp.medio_transporte, rp.nombres as nombre_repartidor,
+                    rp.RUC as ruc_repartidor,
+                    pr.precio, c.correo as correo_cliente,
+                    rp.correo as correo_repartidor,
+                    p.precio as precio_final,
+                    pr.ofertas
+                    from pedidos p
+                    inner join clientes c on c.cod_cliente = p.cliente
+                    inner join productos pr on p.producto = pr.id
+                    inner join repartidores rp on rp.cod_repartidor = p.cod_repartidor
+                    inner join categorias cat on pr.categoria = cat.id
+                    where p.st_pedido = 'P'
+                    and p.id = '$id'
+                    order by p.id ASC";
+            $statment = $this->db->prepare($sql);
+            $statment->execute();
+            $this->admin = $statment->fetchAll();
+            return $this->admin;
+        }
 
+        public function approvePedido($id){
+            $sql ="update pedidos set st_pedido = 'A' where id = '$id'";
+            try{
+                //Iniciamos la transaccion
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db->beginTransaction();
+                //Ejecutamos el query
+                $this->db->exec($sql);
+                $this->db->commit();
+                return true;
+            }catch(Exception $e){
+                echo $e->getMessage();
+                $this->db->rollBack();
+                return false;
+            }
+        }
+        public function disclaimerPedido($id){
+            $sql ="update pedidos set st_pedido = 'X' where id = '$id'";
+            try{
+                //Iniciamos la transaccion
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db->beginTransaction();
+                //Ejecutamos el query
+                $this->db->exec($sql);
+                $this->db->commit();
+                return true;
+            }catch(Exception $e){
+                echo $e->getMessage();
+                $this->db->rollBack();
+                return false;
+            }
+        }
+        public function getGestionPedidosCancelar(){
+            $sql = "select p.id, c.nombres as nombre_cliente,c.identificacion,p.fecha_cancelacion as fecha_creacion, pr.nom_producto
+                    from pedidos p 
+                    inner join 
+                    clientes c on c.cod_cliente = p.cliente
+                    inner join productos pr on p.producto = pr.id
+                    where st_pedido = 'C'
+                    order by p.id ASC";
+            $statment = $this->db->prepare($sql);
+            $statment->execute();
+            $this->admin = $statment->fetchAll();
+            return $this->admin;
+        }
+        public function getDetailsPedidoCancelar($id){
+            $sql = "select rp.horario_disponible,cat.descripcion as categoria,p.id, c.nombres as nombre_cliente,c.identificacion as identificacion_cliente,
+                    p.fecha_cancelacion as fecha_creacion, pr.nom_producto,
+                    rp.medio_transporte, rp.nombres as nombre_repartidor,
+                    rp.RUC as ruc_repartidor,
+                    pr.precio, c.correo as correo_cliente,
+                    rp.correo as correo_repartidor,
+                    p.precio as precio_final,
+                    pr.ofertas,
+                    p.motivo_cancelacion
+                    from pedidos p
+                    inner join clientes c on c.cod_cliente = p.cliente
+                    inner join productos pr on p.producto = pr.id
+                    inner join repartidores rp on rp.cod_repartidor = p.cod_repartidor
+                    inner join categorias cat on pr.categoria = cat.id
+                    where p.st_pedido = 'C'
+                    and p.id = '$id'
+                    order by p.id ASC";
+            $statment = $this->db->prepare($sql);
+            $statment->execute();
+            $this->admin = $statment->fetchAll();
+            return $this->admin;
+        }
+
+        public function approvePedidoCancelar($id){
+            $sql ="update pedidos set st_pedido = 'D' where id = '$id'";
+            try{
+                //Iniciamos la transaccion
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db->beginTransaction();
+                //Ejecutamos el query
+                $this->db->exec($sql);
+                $this->db->commit();
+                return true;
+            }catch(Exception $e){
+                echo $e->getMessage();
+                $this->db->rollBack();
+                return false;
+            }
+        }
     }

@@ -3,7 +3,7 @@
     <!-- ================================================= -->
     <?php if(isset($_SESSION['success_approve'])) : ?>
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
-          El pedido fue aprobado con éxito.
+          La peticion fue aprobada con éxito.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -14,7 +14,7 @@
     ?>
     <?php if(isset($_SESSION['success_disclaimer'])) : ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          El pedido fue cancelado con éxito.
+          La peticion fue cancelada con éxito.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -27,7 +27,7 @@
 
     <?php if(isset($_SESSION['error_approve'])) : ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          El pedido no pudo ser aprobado ocurrio un error en el servidor.
+          La peticion no pudo ser aprobada ocurrio un error en el servidor.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -38,7 +38,7 @@
     ?>
     <?php if(isset($_SESSION['error_disclaimer'])) : ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          El pedido no pudo ser cancelado ocurrio un error en el servidor.
+          La peticion no pudo ser cancelada ocurrio un error en el servidor.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -50,8 +50,7 @@
     <!-- ================================================= -->
     <div class="card">
         <div class=" d-flex justify-content-between align-items-center card-header">
-            <p class="mb-0">Gestiona los pedidos</p>
-            <a href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminRequestDisclaimer'?>" class="btn btn-danger">Gestionar Peticiones de Cancelación.</a>
+            <p class="mb-0">Gestionar Peticiones de Cancelación</p>
         </div>
     </div>
     <div class="table-responsive">
@@ -62,7 +61,7 @@
                     <th>Nombres</th>
                     <th>Identificacion</th>
                     <th>Producto</th>
-                    <th>Fecha Envio</th>
+                    <th>Fecha Cancelacion</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -75,7 +74,7 @@
                                     <img src="assets/img/not_found.svg" alt="#Not Found" class="img_thumb">
                                 </div>
                             </div>
-                            <span style="font-style:italic;">No se han encontrado pedidos con solicitudes pendientes</span>
+                            <span style="font-style:italic;">No se han encontrado pedidos con solicitudes de cancelación</span>
                         </td>
                     </tr>
                 <?php else : ?>
@@ -92,17 +91,17 @@
                         <td style="color:#12121; font-weight:bold;"><?php echo $fecha_final; ?></td>
                         <td>
                             <div class="btn-group mb-3" role="group" aria-label="Basic example">
-                                <a href="<?php echo RUTA.'admin.php?c=admin&a=getDetailsPedido&id='.$pedido['id']; ?>"  data-toggle="tooltip" data-placement="top" title="Revisar Pedido" id="modificar1">
+                                <a href="<?php echo RUTA.'admin.php?c=admin&a=getDetailsPedidoCancelar&id='.$pedido['id']; ?>"  data-toggle="tooltip" data-placement="top" title="Revisar Peticion" id="modificar1">
                                     <button type="button" style="border-radius: 5px 0 0 5px;" class="btn btn-info">
                                         <i style="color:#fff; font-size:16px !important;" class="fas fa-eye"></i>
                                     </button>
                                 </a>
-                                <a href="<?php echo RUTA.'admin.php?c=admin&a=approvePedido&id='.$pedido['id']; ?>"  data-toggle="tooltip" data-placement="top" title="Aprobar Pedido" id="modificar1">
+                                <a href="<?php echo RUTA.'admin.php?c=admin&a=approvePedidoCancelar&id='.$pedido['id']; ?>"  data-toggle="tooltip" data-placement="top" title="Aprobar Peticion" id="modificar1">
                                     <button type="button" style="border-radius: 0px !important;" class="btn btn-success">
                                         <i style="color:#fff; font-size:16px !important;" class="fas fa-check alt"></i>
                                     </button>
                                 </a>
-                                <a href="<?php echo RUTA.'admin.php?c=admin&a=disclaimerPedido&id='.$pedido['id']; ?>" data-toggle="tooltip" data-placement="top"  title="" data-original-title="Cancelación Pedido" id="modificar1">
+                                <a href="<?php echo RUTA.'admin.php?c=admin&a=disclaimerPedidoCancelar&id='.$pedido['id']; ?>" data-toggle="tooltip" data-placement="top"  title="" data-original-title="Cancelación Peticion" id="modificar1">
                                     <button type="button" style="border-radius:0 5px 5px 0" class="btn btn-danger izquierdo" >
                                         <i style="color:#fff; font-size:16px !important;" class="fas fa-times alt"></i>
                                     </button>
