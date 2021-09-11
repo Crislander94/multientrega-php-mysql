@@ -51,6 +51,7 @@
     <div class="card">
         <div class=" d-flex justify-content-between align-items-center card-header">
             <p class="mb-0">Gestionar Peticiones de Cancelación</p>
+            <a href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminPedidos'?>" class="btn btn-info">Gestionar Peticiones de Cancelación.</a>
         </div>
     </div>
     <div class="table-responsive">

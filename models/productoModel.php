@@ -106,7 +106,7 @@ class Productos_model {
     public function deleteProduct($id, $cod_empresa, $cod_usuario){
         $sql = "UPDATE productos 
                 set
-                    st_producto = 'I',
+                    st_producto = 'X',
                     deleted_at =  CURRENT_TIMESTAMP(),
                     deleted_by = '".$cod_usuario."'
                 where

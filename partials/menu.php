@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-left" style="padding-right: 0px !important; padding-left: 0px !important">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-left" style="padding-right: 0px !important; padding-left: 0px !important; <?php echo $color; ?>">
     <!-- Brand -->
     <a class="navbar-brand" href="#" style="padding: 8px !important">Bienvenid@ <?php echo $_SESSION['username'] ?></a>
     <!-- Toggler/collapsibe Button -->
@@ -36,8 +36,12 @@
                         <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminEnterprise'; ?>"><i class="fas fa-building mr-1"></i>Administrar Empresas</a>
                         <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminDelivery'; ?>"><i class="fas fa-truck mr-1"></i>Administrar Repartidores</a>
                         <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminPedidos'; ?>"><i class="fas fa-boxes mr-1"></i>Administrar Pedidos</a>
-                        <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderReportes'; ?>"><i class="fas fa-window-restore mr-1"></i>Reporeria</a>
+                        <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderReportes'; ?>"><i class="fas fa-window-restore mr-1"></i>Reporteria</a>
                     <?php endif; ?>
+                </li>
+                <li class="nav-item dropdown">
+                    <p class="title_menu">Configuracion</p>
+                    <a href="configuracion.php" class="dropdown-item"><i class="fas fa-palette mr-1"></i>Estilos</a>
                 </li>
             <?php endif; ?>
             <li class="nav-item">

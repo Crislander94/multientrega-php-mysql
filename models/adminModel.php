@@ -279,8 +279,30 @@
                 return false;
             }
         }
-        public function disclaimerPedido($id){
-            $sql ="update pedidos set st_pedido = 'X' where id = '$id'";
+        public function disclaimerPedido($id,$motivo){
+            $sql ="update pedidos set 
+                st_pedido = 'X',
+                motivo_cancelacion = '$motivo',
+                fecha_cancelacion = CURRENT_TIMESTAMP
+                where id = '$id'";
+            try{
+                //Iniciamos la transaccion
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db->beginTransaction();
+                //Ejecutamos el query
+                $this->db->exec($sql);
+                $this->db->commit();
+                return true;
+            }catch(Exception $e){
+                echo $e->getMessage();
+                $this->db->rollBack();
+                return false;
+            }
+        }
+        public function disclaimerPedidoCancelar($id){
+            $sql ="update pedidos set 
+                st_pedido = 'X'
+                where id = '$id'";
             try{
                 //Iniciamos la transaccion
                 $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -331,21 +353,5 @@
             $this->admin = $statment->fetchAll();
             return $this->admin;
         }
-
-        public function approvePedidoCancelar($id){
-            $sql ="update pedidos set st_pedido = 'D' where id = '$id'";
-            try{
-                //Iniciamos la transaccion
-                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $this->db->beginTransaction();
-                //Ejecutamos el query
-                $this->db->exec($sql);
-                $this->db->commit();
-                return true;
-            }catch(Exception $e){
-                echo $e->getMessage();
-                $this->db->rollBack();
-                return false;
-            }
-        }
+       
     }

@@ -1,7 +1,3 @@
-<?php
-    include_once 'partials/cabecera.php';
-    include_once 'partials/menu.php';
-?>
 <div class="contenido contenido_table">
     <?php if(isset($_SESSION['error'])) : ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">

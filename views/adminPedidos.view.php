@@ -102,7 +102,7 @@
                                         <i style="color:#fff; font-size:16px !important;" class="fas fa-check alt"></i>
                                     </button>
                                 </a>
-                                <a href="<?php echo RUTA.'admin.php?c=admin&a=disclaimerPedido&id='.$pedido['id']; ?>" data-toggle="tooltip" data-placement="top"  title="" data-original-title="Cancelación Pedido" id="modificar1">
+                                <a href="#" data-id="<?php echo $pedido["id"] ?>" onclick="showModalMotivos(this)"  data-toggle="tooltip" data-placement="top"  title="" data-original-title="Cancelación Pedido" id="modificar1">
                                     <button type="button" style="border-radius:0 5px 5px 0" class="btn btn-danger izquierdo" >
                                         <i style="color:#fff; font-size:16px !important;" class="fas fa-times alt"></i>
                                     </button>
@@ -115,5 +115,51 @@
             </tbody>
         </table>
     </div>
+    <!-- Modal Motivo Cancelacion -->
+    <div class="modal fade" id="modal_cancelacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog custom_modal_dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Motivo Cancelacion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?php echo RUTA.'admin.php?c=admin&a=disclaimerPedido';?>" class="modal-body row p-4" id="formulario-motivos" method="POST">
+                    <div class="input-group d-flex justify-content-center p-4 mb-3" style="width:100%">
+                        <textArea type="text" class="form-control custom_input_single" style="max-width:70%; min-width:70%; min-height:150px; max-height:200px" name="motivo" id="motivo" aria-label="Recipient's username" aria-describedby="button-addon2" placeholder="Escriba su motivo aqui..."></textArea>
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="button-addon2"><i class="fas fa-window-close"></i></span>
+                        </div>
+                        <input type="hidden" name="cod_pedido" id="cod_pedido">
+                    </div>  
+                    <div class="modal-footer d-flex justify-content-end mt-1" style="width:100%">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-info">Enviar Motivo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 <?php include_once 'partials/footer.php' ?>
+<script>
+    const formulario_motivos = document.getElementById('formulario-motivos');
+    const showModalMotivos = (element) =>{
+        $("#modal_cancelacion").modal('show');
+        document.getElementById('cod_pedido').value = element.getAttribute('data-id');
+    }
+    formulario_motivos.addEventListener('submit', (e) =>{
+        console.log('Holia')
+        if(document.getElementById('motivo').value === ""){
+            Swal.fire('Validate Form', 'No puede cancelar sin motivo', 'warning');
+            e.preventDefault();
+            return;
+        }
+        if(document.getElementById('motivo').value === ""){
+            Swal.fire('Validate Form', 'Verifique su codigo de pedido', 'warning');
+            e.preventDefault();
+            return;
+        }
+    })
+</script>

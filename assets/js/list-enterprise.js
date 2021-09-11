@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </tr>`;
     }
     const transformCreatedDate = (fecha) =>{
-        const array_month = ["Enero", "Febrero", "Marzo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre" , "Noviembre", "Diciembre"];
+        const array_month = ["Enero", "Febrero", "Marzo","Abril","Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre" , "Noviembre", "Diciembre"];
         let newFecha = fecha.split(" ")[0];
         newFecha = newFecha.split("-")[2]+"/"+array_month[fecha.split("-")[1] -1]+"/"+newFecha.split("-")[0];
         return newFecha;

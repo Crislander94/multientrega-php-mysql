@@ -2,8 +2,8 @@
 
     include_once 'config/settings.php';
     require_once 'verificar.php';
-    include_once 'partials/menu.php';
     include_once 'partials/cabecera.php';
+    include_once 'partials/menu.php';
     require_once 'core/routes_admin.php';
     require_once 'db/conexion.php';
     $db = new DBClass();

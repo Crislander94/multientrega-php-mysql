@@ -303,9 +303,10 @@
         }
         public function disclaimerPedido($conexion){
             require_once "models/adminModel.php";
-            $id = $_REQUEST["id"];
+            $id = $_POST["cod_pedido"];
+            $motivos = $_POST["motivo"];
             $admin  = new adminModel($conexion);
-            $result = $admin->disclaimerPedido($id);
+            $result = $admin->disclaimerPedido($id, $motivos);
             if(!$result){
                 $_SESSION['error_disclaimer'] = true;
             }else{
@@ -313,8 +314,6 @@
             }
             header('Location: admin.php?c=admin&a=renderAdminPedidos');
         }
-        
-
         public function renderAdminRequestDisclaimer($conexion){
             require_once "models/adminModel.php";
             $admin  = new adminModel($conexion);
@@ -372,7 +371,7 @@
             require_once "models/adminModel.php";
             $id = $_REQUEST["id"];
             $admin  = new adminModel($conexion);
-            $result = $admin->approvePedidoCancelar($id);
+            $result = $admin->disclaimerPedidoCancelar($id);
             if(!$result){
                 $_SESSION['error_aprrove'] = true;
             }else{

@@ -49,61 +49,32 @@
     ?>
     <!-- ================================================= -->
     <div class="card">
-        <div class=" d-flex justify-content-between align-items-center card-header">
-            <p class="mb-0">Observa como van tus ingresos.</p>
-            <!-- Button trigger modal -->
-            <button type="button" id="showEnterprise" class="btn btn-info" data-toggle="modal" data-target="#modal_enterprises">
-                Mostrar Empresas Disponibles.
-            </button>
+        <div class="py-4 d-flex justify-content-between align-items-center card-header">
+            <p class="mb-0" style="text-shadow: 0 0 10px rgba(0,0,0,.7); font-weight:bold;">Observa como van tus ingresos.</p>
+            <select name="tipo" id="tipo" class="custom_select_reportes">
+                <option value="">Filtra para más detalles...</option>
+                <option value="cliente">Clientes</option>
+                <option value="repartidor">Repartidor</option>
+                <option value="empresa">Empresa</option>
+                <option value="producto">Producto</option>
+                <option value="categoria">Categoria</option>
+            </select>
         </div>
     </div>
     <div class="table-responsive">
-        <table class="table">
-            <thead>
+        <table class="table table-striped table-dark">
+            <thead id="cabecera">
                 <tr>
                     <th>#</th>
                     <th>Nombres</th>
                     <th>Precio</th>
                     <th>Fecha Creación</th>
-                    <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody id="myProducts">
-                <tr>
-                    <td colspan="8" class="text-center py-4">
-                        <div class="container_thumb_center d-flex justify-content-center mb-4">
-                            <div class="thumb_lg">
-                                <img src="assets/img/unsearch_enterprise.svg" alt="#Not Selected" class="img_thumb">
-                            </div>
-                        </div>
-                        <span style="font-style:italic;">Seleccione una empresa para ver los resultados de sus productos</span>
-                    </td>
-                </tr>
-            </tbody>
+            <tbody id="myResponseReports"></tbody>
         </table>
     </div>
-    <!-- Modal Con empresas disponibles -->
-    <div class="modal fade" id="modal_enterprises" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog custom_modal_dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Lista de empresas activas</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body row p-4">
-                <select class="col-12 select_custom_styles p-2" name="myEnterprise" id="myEnterprises"></select>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-info" id="selectedEnterprise">Seleccionar</button>
-            </div>
-            </div>
-        </div>
-    </div>
-
 </div>
 
-<script src="assets/js/list-enterprise.js"></script>
+<script src="assets/js/list-reporte.js"></script>
 <?php include_once 'partials/footer.php' ?>

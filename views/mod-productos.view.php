@@ -1,6 +1,5 @@
 <?php
-    include_once 'partials/cabecera.php';
-    include_once 'partials/menu.php';
+    
 
     if(isset($_GET['id'])){
       $query = "Select 
