@@ -11,6 +11,6 @@
     }
     if(!isset($_SESSION["cod_empresa"])) header('Location: registrar-empresa.php');
     if($_SESSION['estado_empresa'] === 'P') header('Location: index.php');
-    include_once 'views/control-pedidos.view.php';
+    include_once 'views/enterprise/control-pedidos.view.php';
     include_once './partials/footer.php';
 ?>

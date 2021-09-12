@@ -36,7 +36,7 @@
     $tipo_empresa = $result[0]['tipo_empresa'];
     $dias = $result[0]['dias'];
     $horas = $result[0]['horas'];
-    include_once 'views/datos-empresa.view.php';
+    include_once 'views/enterprise/datos-empresa.view.php';
     include_once 'partials/footer.php';
 ?>
 

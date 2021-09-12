@@ -4,14 +4,14 @@
         //Carga la vista de todos los productos
         public function index($conexion){
             // $data["admin"] = $admin->getPrincipalView();
-            require_once "views/admin.view.php";
+            require_once "views/admin/admin.view.php";
         }
         public function renderAdminClient($conexion){
             require_once "models/adminModel.php";
             $admin  = new adminModel($conexion);
             $data["clientes"] = $admin->getGestionClients();
             //El modelo me traera los clientes a administrar
-            require_once "views/adminClientes.view.php";
+            require_once "views/admin/adminClientes.view.php";
         }
 
         public function getDetailsClient($conexion){
@@ -34,7 +34,7 @@
                 $_SESSION['empty'] = true;
             }
             //Traemos la vista para renderizar el cliente....
-            require_once "views/detailsClient.view.php";
+            require_once "views/admin/detailsClient.view.php";
         }
         public function approveClient($conexion){
             require_once "models/adminModel.php";
@@ -66,7 +66,7 @@
             $admin  = new adminModel($conexion);
             $data["repartidores"] = $admin->getGestionDeliverys();
             //El modelo me traera los Repartidores a administrar
-            require_once "views/adminRepartidores.view.php";
+            require_once "views/admin/adminRepartidores.view.php";
         }
 
         public function getDetailsDelivery($conexion){
@@ -94,7 +94,7 @@
                 $_SESSION['empty']  = true;
             }
             //Traemos la vista para renderizar al repartidor....
-            require_once "views/detailsDelivery.view.php";
+            require_once "views/admin/detailsDelivery.view.php";
         }
 
         public function approveDelivery($conexion){
@@ -127,7 +127,7 @@
             $admin  = new adminModel($conexion);
             $data["empresas"] = $admin->getGestionEnterprise();
             //El modelo me traera a las empresas a Administrar
-            require_once "views/adminEmpresas.view.php";
+            require_once "views/admin/adminEmpresas.view.php";
         }
 
 
@@ -157,7 +157,7 @@
                 $_SESSION['empty']  = true;
             }
             //Traemos la vista para renderizar al repartidor....
-            require_once "views/detailsEnterprise.view.php";
+            require_once "views/admin/detailsEnterprise.view.php";
         }
 
         public function approveEnterprise($conexion){
@@ -187,7 +187,7 @@
         
         public function renderAdminProducts($conexion){
             //El modelo me traera a los productos de la empresa a Administrar
-            require_once "views/adminProductos.view.php";
+            require_once "views/admin/adminProductos.view.php";
         }
         public function getDetailsProduct($conexion){
             require_once "models/adminModel.php";
@@ -210,7 +210,7 @@
                 $_SESSION['empty']  = true;
             }
             //Traemos la vista para renderizar al producto....
-            require_once "views/detailsProduct.view.php";
+            require_once "views/admin/detailsProduct.view.php";
         }
 
         public function approveProduct($conexion){
@@ -244,7 +244,7 @@
             $admin  = new adminModel($conexion);
             $data["pedidos"] = $admin->getGestionPedidos();
             //El modelo me traera Los pedidos a administrar
-            require_once "views/adminPedidos.view.php";
+            require_once "views/admin/adminPedidos.view.php";
         }
         public function getDetailsPedido($conexion){
             require_once "models/adminModel.php";
@@ -287,7 +287,7 @@
                 $_SESSION['empty']  = true;
             }
             //Traemos la vista para renderizar al producto....
-            require_once "views/detailsPedido.view.php";
+            require_once "views/admin/detailsPedido.view.php";
         }
         public function approvePedido($conexion){
             require_once "models/adminModel.php";
@@ -319,7 +319,7 @@
             $admin  = new adminModel($conexion);
             $data["pedidos"] = $admin->getGestionPedidosCancelar();
             //El modelo me traera Los pedidos a administrar
-            require_once "views/adminRequestDisclaimer.view.php";
+            require_once "views/admin/adminRequestDisclaimer.view.php";
         }
 
         public function getDetailsPedidoCancelar($conexion){
@@ -365,7 +365,7 @@
                 $_SESSION['empty']  = true;
             }
             //Traemos la vista para renderizar al producto....
-            require_once "views/detailsRequestDisclaimer.view.php";
+            require_once "views/admin/detailsRequestDisclaimer.view.php";
         }
         public function approvePedidoCancelar($conexion){
             require_once "models/adminModel.php";
@@ -398,6 +398,6 @@
             $admin  = new adminModel($conexion);
 
             //El modelo me traera La data para gestionar los reportes.
-            require_once "views/adminReportes.view.php";
+            require_once "views/admin/adminReportes.view.php";
         }
     }

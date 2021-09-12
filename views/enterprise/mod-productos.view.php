@@ -28,6 +28,11 @@
 <div class="contenido contenido_main">
     <form action="<?php echo RUTA.'producto.php?c=producto&a=update'?>" method="POST" class="needs-validation" id="registar_producto" style="margin-bottom: 1rem;">
       <h3 class="text-center">Modificar producto</h3>
+      <div class="container_thumb_center mb-4 col-12 d-flex justify-content-center">
+          <div class="thumb">
+              <img class="img_thumb" src="<?php echo RUTA?>assets/img/product_enterprise.svg" alt="#Ver Empresa">
+          </div>
+      </div>
       <div class="form-group">
         <label for="tuscategorias">Categorias:</label>
         <select class="form-control selectpicker" id="tuscategorias" name="categoria">

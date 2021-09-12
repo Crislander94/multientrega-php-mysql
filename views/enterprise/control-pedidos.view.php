@@ -11,7 +11,6 @@
                         <option value="cancelados">Cancelados</option>
                     </select>
                     <input type="hidden" name="titulo">
-                    <button type="submit" class="btn btn-info">Buscar <i class="fas fa-search"></i></button>
                 </div>
             </form>
         </div>

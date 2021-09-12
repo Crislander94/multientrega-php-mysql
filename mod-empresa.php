@@ -93,29 +93,59 @@
         endif; 
     ?>
     <h3 class="text-center">Modifica tu empresa</h3>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" id="form_modificar_registro" class="needs-validation" style="margin-bottom: 1rem;">
-        <div class="form-group">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" id="form_modificar_registro" class="row needs-validation" style="margin-bottom: 1rem;">
+        <div class="container_thumb_center mb-4 col-12 d-flex justify-content-center">
+          <div class="thumb">
+              <img class="img_thumb" src="<?php echo RUTA?>assets/img/admin_enterprise.svg" alt="#Ver Empresa">
+          </div>
+        </div>
+        <div class="form-group col-12">
             <label for="nom_empresa">Nombre:</label>
-            <input type="text" class="form-control" id="nom_empresa" placeholder="Registre nombre" value="<?php echo $nom_empresa?>" name="nom_empresa">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-archway"></i></span>
+                </div>
+                <input type="text" class="form-control" id="nom_empresa" placeholder="Registre nombre" value="<?php echo $nom_empresa?>" name="nom_empresa">
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <label for="ruc">RUC:</label>
-            <input type="text" class="form-control" id="ruc" placeholder="Registre RUC" value="<?php echo $ruc; ?>" name="ruc">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="far fa-id-badge"></i></span>
+              </div>
+              <input type="text" class="form-control" id="ruc" placeholder="Registre RUC" value="<?php echo $ruc; ?>" name="ruc">
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <label for="direccion">Direccion:</label>
-            <input type="text" class="form-control" id="direccion" placeholder="Registre su Direccion" name="direccion" value="<?php echo $direccion; ?>">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-route"></i></span>
+                </div>
+                <input type="text" class="form-control" id="direccion" placeholder="Registre su Direccion" name="direccion" value="<?php echo $direccion; ?>">
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <label for="correo">Correo:</label>
-            <input type="email" class="form-control" id="correo" placeholder="Registre correo" value="<?php echo $correo; ?>" name="correo">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope-open"></i></span>
+              </div>
+              <input type="email" class="form-control" id="correo" placeholder="Registre correo" value="<?php echo $correo; ?>" name="correo">
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <label for="telefono">Teléfono:</label>
-            <input type="text" class="form-control" id="telefono" placeholder="Registre telefono" value="<?php echo $telefono; ?>" name="telefono">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-square-alt"></i></span>
+              </div>
+              <input type="text" class="form-control" id="telefono" placeholder="Registre telefono" value="<?php echo $telefono; ?>" name="telefono">
+            </div>
         </div>
-        <div class="form-group">
-            <label>Tipo empresa:</label>
+        <div class="form-group col-12 d-flex flex-wrap justify-content-center">
+            <label class="mr-3" style="width:100%;text-align:center;font-weight:bold;">Tipo empresa:</label>
             <?php 
                 $xquery = "SELECT * FROM tipo_empresa";
                 $xstatment = $conexion->prepare($xquery);
@@ -127,14 +157,14 @@
                     $descripcion = $tipo_empresa['descripcion'];
                     $checked = '';
                     if(strcmp($tipo, $id) === 0) {$checked = "checked";}
-                    echo "<div class='custom-control custom-radio'>";
+                    echo "<div class='custom-control mr-3 custom-radio'>";
                     echo "    <input type='radio' class='custom-control-input' id='customControlValidation".$id."' value='".$id."' name='radio-stacked'".$checked." >";
                     echo "    <label class='custom-control-label' for='customControlValidation".$id."'>".$descripcion."</label>";
                     echo "</div>";
                 }
             ?>
         </div>
-        <div id="btnGuardar" class="d-flex justify-content-center"><button type="submit" class="btn btn-info">Actualizar</button></div>
+        <div id="btnGuardar" class="col-12 d-flex justify-content-center"><button type="submit" class="btn btn-info">Actualizar</button></div>
     </form> 
 </div>
 <script src="./assets/js/validacion-mod-empresa.js"></script>

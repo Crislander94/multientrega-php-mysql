@@ -1,5 +1,5 @@
 /*=========================================
 	USERS UNICOS EN CORREO Y USERNAME
 ==========================================*/
-insert into users(username, email, password)values('brigitte', '12345', 'dayan@gmail.com');
-insert into users(username, email, password)values('cesar', '12345', 'cesar@gmail.com');
+insert into users(username, email, password)values('brigitte', 'dayan@gmail.com', '12345');
+insert into users(username, email, password)values('cesar','cesar@gmail.com', '12345');

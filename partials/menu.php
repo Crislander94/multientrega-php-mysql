@@ -17,7 +17,7 @@
                     <?php if($_SESSION["tipo_usuario"] === 'E') : ?>
                         <p class="title_menu">Empresa</p>
                         <?php if(!isset($_SESSION["cod_empresa"])) : ?>
-                            <a class="dropdown-item" href="<?php echo RUTA.'registrar-empresa.php'; ?>"><i class="fas fa-plus-square"></i>Registrar su informacion</a>
+                            <a class="dropdown-item" href="<?php echo RUTA.'registrar-empresa.php'; ?>"><i class="fas fa-plus-square mr-1"></i>Registrar su informacion</a>
                         <?php endif;?>
                         <?php if(isset($_SESSION["cod_empresa"])):  ?>
                             <a class="dropdown-item" href="<?php echo RUTA.'mod-empresa.php'; ?>"><i class="fas fa-edit mr-1"></i> Modificar su informacion</a>

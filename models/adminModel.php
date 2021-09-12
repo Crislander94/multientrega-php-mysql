@@ -165,13 +165,15 @@
             }
         }
         public function disclaimerEnterprise($id){
-            $sql = "update empresa set st_empresa = 'X' where cod_empresa = '$id'";
+            $sql = "delete from empresa where cod_empresa = '$id'";
+            $reset_users = "update users set cod_empresa = null where cod_empresa = '$id' ";
             try{
                 //Iniciamos la transaccion
                 $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $this->db->beginTransaction();
                 //Ejecutamos el query
                 $this->db->exec($sql);
+                $this->db->exec($reset_users);
                 $this->db->commit();
                 return true;
             }catch(Exception $e){
