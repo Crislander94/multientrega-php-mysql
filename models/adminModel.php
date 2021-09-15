@@ -23,8 +23,8 @@
             c.nombres, 
             c.identificacion, c.created_at as fecha_creacion,
             c.correo, c.telefono,
-            fp.descripcion as metodo_pago
-            from clientes c inner join formas_pago fp on c.metodo_pago = fp.id 
+            c.metodo_pago
+            from clientes c
             where 
             c.st_cliente ='P'
             and
