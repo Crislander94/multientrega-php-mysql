@@ -58,7 +58,7 @@
                         $columnas
                     from pedidos p
                     $inner
-                    where p.st_pedido = 'P'
+                    where p.st_pedido = 'F'
                     $groups 
                     order by p.id ASC";
             $statment = $conexion->prepare($sql);
@@ -88,7 +88,7 @@
                 sum(ganancia_repartidor) as ganancia_repartidor,
                 sum(ganancia_web) as ganancia_duenios,
                 sum(ganancia_empresa) as ganancia_empresa
-                from pedidos where st_pedido = 'P' ";
+                from pedidos where st_pedido = 'F' ";
         $statment = $conexion->prepare($sql);
         $statment->execute();
         while($fila = $statment->fetch(PDO::FETCH_ASSOC)){

@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         total += parseFloat(ganancia_empresa);
                     });
                     body_pedidos_control.innerHTML += `<td colspan = ${colspan} style="background:#f2f2f2;text-align:center; font-weight:bold; color:#000">TOTAL</td>
-                        <td style="background:${color};color:#fff;text-align:center;font-weight:bold">$${total}</td>`;
+                        <td style="background:${color};color:#fff;text-align:center;font-weight:bold">$${total.toFixed(2)}</td>`;
                 }else{
                     body_pedidos_control.innerHTML = notFoundItems();
                 }

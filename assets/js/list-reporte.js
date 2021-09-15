@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <td style="text-align:center">$${ganancia_duenios}</td>
                                     <td style="text-align:center">$${total_ventas}</td>
                                 </tr>`;
-                                total += parseFloat(total_ventas);
+                                total += parseFloat(total_ventas).toFixed(2);
                             }else{
                                 myResponseReports.innerHTML = notFoundItems();
                                 return;
