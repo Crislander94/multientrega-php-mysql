@@ -4,6 +4,11 @@
     include_once 'partials/cabecera.php';
     include_once 'partials/menu.php';
     include_once 'db/conexion.php';
+    if(isset($_SESSION["tipo_usuario"])){
+        if($_SESSION["tipo_usuario"] === 'A') header('Location: admin.php');
+        if($_SESSION["tipo_usuario"] === 'R') header('Location: repartidor.php');
+        if($_SESSION["tipo_usuario"] === 'C') header('Location: cliente.php');
+    } 
     if(isset($_SESSION["cod_empresa"])) header('Location: index.php');
     //Abrimos la conexion...
     $dbClass = new DBClass();
@@ -87,6 +92,7 @@
                 $conexion->exec($xyQuery);
                 $conexion->commit();
                 $_SESSION['success'] = true;
+                $_SESSION['estado_empresa'] = 'P';
                 header('Location: index.php');
             }catch(Exception $e){
                 echo $e->getMessage();
@@ -111,28 +117,58 @@
         endif; 
     ?>
     <h3 class="text-center">Registra tu empresa</h3>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" id="form_registrar_empresa" class="needs-validation" style="margin-bottom: 1rem;">
-        <div class="form-group">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" id="form_registrar_empresa" class="row needs-validation" style="margin-bottom: 1rem;">
+        <div class="container_thumb_center mb-4 col-12 d-flex justify-content-center">
+          <div class="thumb">
+              <img class="img_thumb" src="<?php echo RUTA?>assets/img/admin_enterprise.svg" alt="#Ver Empresa">
+          </div>
+        </div>
+        <div class="form-group col-12">
             <label for="nom_empresa">Nombre:</label>
-            <input type="text" class="form-control" id="nom_empresa" placeholder="Registre nombre" name="nom_empresa">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-archway"></i></span>
+                </div>
+                <input type="text" class="form-control" id="nom_empresa" placeholder="Registre nombre" name="nom_empresa">
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <label for="ruc">RUC:</label>
-            <input type="text" class="form-control" id="ruc" placeholder="Registre RUC" name="ruc">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="far fa-id-badge"></i></span>
+                </div>
+                <input type="text" class="form-control" id="ruc" placeholder="Registre RUC" name="ruc">
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <label for="direccion">Direccion:</label>
-            <input type="text" class="form-control" id="direccion" placeholder="Registre su Direccion" name="direccion">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-route"></i></span>
+                </div>
+                <input type="text" class="form-control" id="direccion" placeholder="Registre su Direccion" name="direccion">
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <label for="correo">Correo:</label>
-            <input type="email" class="form-control" id="correo" placeholder="Registre correo" name="correo">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope-open"></i></span>
+                </div>
+                <input type="email" class="form-control" id="correo" placeholder="Registre correo" name="correo">
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <label for="telefono">Teléfono:</label>
-            <input type="text" class="form-control" id="telefono" placeholder="Registre telefono" name="telefono">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-square-alt"></i></span>
+                </div>
+                <input type="text" class="form-control" id="telefono" placeholder="Registre telefono" name="telefono">
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <label>Tipo empresa:</label>
             <?php 
                 $xquery = "SELECT * FROM tipo_empresa";
@@ -151,7 +187,7 @@
                 }
             ?>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <label for="diasAtencion">Días de atención:</label>
             <select class="form-control selectpicker" name="horarios[]" id="horarios" multiple>
                 <option value="1">Lunes</option>
@@ -163,7 +199,7 @@
                 <option value="7">Domingo</option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <h5>Horario atencion</h5>
             <label for="desde_hora">Desde(horas)</label>
             <select class="select_custom_styles" name="desde_hora" id="desde_hora">
@@ -178,7 +214,7 @@
                     oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
             >
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <label for="hasta_hora">Hasta(horas)</label>
             <select  class="select_custom_styles" name="hasta_hora" id="hasta_hora">
                 <?php 
@@ -192,7 +228,7 @@
                     oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
             >
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <label for="formaspago">Formas de pago admitidas:</label>
             <select class="form-control selectpicker" name="formaspago[]" id="formaspago" multiple>
                 <?php 
@@ -209,14 +245,14 @@
             </select>
             <input  type='hidden' id='strings_pagos' name='strings_pagos'/>
         </div>
-        <div class="form-group">
+        <div class="form-group col-12">
             <div class="form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" type="checkbox" name="terminos_condiciones" id="terminos_condiciones" > ¿Está de acuerdo con los términos y condiciones?
                 </label>
             </div>
         </div>
-        <div id="btnGuardar"><button type="submit" class="btn btn-primary">Guardar</button></div>
+        <div class="col-12 d-flex justify-content-center" id="btnGuardar"><button type="submit" class="btn btn-primary">Guardar</button></div>
     </form> 
 </div>
 <script src="./assets/js/datos-empresa.js"></script>

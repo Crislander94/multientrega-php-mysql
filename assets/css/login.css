@@ -6,39 +6,65 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+body{
+  font-family: sans-serif, Arial, Helvetica ;
+  background: url('../img/login.jpg');
+  height: 100vh;
+  position: relative;
+}
+/*NUEVO LOGIN*/
+.form-login{
+  width: 400px;
+  height: 340px;
+  background: #444;
+  margin:auto;
+  margin-top: 6px;
+  box-shadow: 7px 13px 37px white;
+  padding: 20px 30px;
+  border-top: 4px solid blue;
+  color: whitesmoke;
+}
 
-h1 {
+.form-login h5{
+  margin: 0;
   text-align: center;
+  height: 40px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid;
+  font-size: 20px;
+  }
+  
+.controls{
+    width:100% ;
+    border: 1px solid lightblue;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252525;
+    font-size: 14px;
+    font-weight: bold;
+    color:#fff;
 }
-
-main {
-  max-width: 350px;
-  margin: auto;
+.form-login p{
+  height: 40px;
+  text-align: center;
+  border-bottom: 1px solid;
 }
-
-input[type=email], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  outline: none;
-  border-radius: .5em;
+.form-login a:hover{
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
 }
-
-input[type=email]:focus, input[type=password]:focus {
-  border: 1px solid #1da1f2;
-  transition: all .3s;
+.form-login a{
+    text-decoration: underline;
 }
-
 .btnSubmitLogin {
-  background-color: #1da1f2;
+  background-color:lightseagreen;
   color: white;
   padding: 10px 15px;
   margin: 8px 0;
   border: none;
-  width: 100%;
+  display: inline-block;
+  width: 100% !important;
   outline: none;
   border-radius: 5px;
   cursor: pointer;
@@ -47,39 +73,13 @@ input[type=email]:focus, input[type=password]:focus {
 .btnSubmitLogin:hover{
   background-color: #1f6d9e !important;
 }
-.containerbtnreg {
+footer{
+  border-top: 1px solid rgba(0, 0, 0, .1);
+  position: absolute;
+  bottom: 0;
+  background-color: #fff;
+  color: #121212;
+  padding: 10px;
   text-align: center;
-}
-
-.forgetpsw a {
-  text-decoration: none;
-  color: #1da1f2
-}
-
-.rememberpsw {
-  padding: 10px 0;
-}
-
-.imgcontainer {
-  text-align: center;
-  height: 120px;
-}
-
-.imgcontainer img {
-  height: 100%;
-}
-
-.forgetpsw {
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.separator {
-  height: 1px;
-  margin-top: 0px !important;
-  margin-bottom: 0px !important;
-  text-align: left;
-  border-width: 0;
-  color: gray;
-  background-color: #dadde1;
+  width: 100%;
 }

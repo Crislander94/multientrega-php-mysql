@@ -12,42 +12,38 @@
     <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="stylesheet" href="../assets/css/personalizacion.css">
 </head>
-<body>
-  <div id="contenido" class="contenido contenido_login">
-    <div>
-      <?php if(isset($_SESSION['error'])) : ?>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          El usuario no se encuentra en nuestros registros
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <?php
-        unset($_SESSION['error']);
-        endif; 
-      ?>
-      <div class="imgcontainer">
-        <img src="../assets/img/empresa.jpg" width="200" height="200" alt="Avatar" class="avatar">
+<body class="bg-light" style="margin-left: 0px !important;">
+  <nav class="card p-2" style="border-bottom: 1px solid rgba(0,0,0,.1)">
+    <a class="navbar-brand" style="color:#000;" href="#">MULTI-ENTREGA</a>
+  </nav>
+  <hr style="color:#000; opacity: .4">
+  <?php if(isset($_SESSION['error'])) : ?>
+      <div class="alert alert-danger alert-dismissible fade show mx-auto mb-4 w-50" role="alert">
+        El usuario no se encuentra en nuestros registros
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <h1>Iniciar sesión</h1>
+  <?php
+    unset($_SESSION['error']);
+    endif; 
+  ?>
+  <section id="cabeza" class="text-white font-weigth-bold">
+    <div class="row m-0">
+      <section class="form-login">
+        <center>
+          <h5> Login</h5>
+        </center>
+        <form action="validar-usuario.php" method="POST" name="login_account_access" id="login_account_access">
+          <input id="user" class="controls" type="email" placeholder="Correo electrónico" name="email">
+          <input id="pass" class="controls" type="password" placeholder="Contraseña" name="password">
+          <div style="text-align: center;">
+            <input class="btnSubmitLogin" id="btnSubmitLogin" type="submit"  value="Acceder"/>
+          </div>
+        </form>
+      </section>
     </div>
-    <div>
-      <form action="validar-usuario.php" method="POST" name="login_account_access" id="login_account_access">
-          <input id="user" type="email" placeholder="Correo electrónico" name="email">
-          <input id="pass" type="password" placeholder="Contraseña" name="password">
-        <div class="rememberpsw">
-          <label><input type="checkbox" name="remember_user"> Recordar usuario</label>
-        </div>
-        <div style="text-align: center;">
-          <input class="btnSubmitLogin" id="btnSubmitLogin" type="submit" value="Acceder">
-        </div>
-      </form>
-    </div>
-      <div class="forgetpsw">
-        <span><a href="#">¿Olvidaste usuario o contraseña?</a></span>
-      </div>
-      <hr class="separator">
-  </div>
+  </section>
   <footer class="footer mt-auto py-3" style="text-align: center;">
     <div class="container">
       <span class="text-muted">Derecho reservados &copy; 2021</span>
@@ -60,3 +56,7 @@
   <script src="js/validaciones_login.js"></script>
 </body>
 </html>
+
+
+
+

@@ -7,14 +7,14 @@
             require_once "models/productoModel.php";
             $productos  = new Productos_model($conexion);
             $data["productos"] = $productos->getProducts($cod_empresa);
-            require_once "views/productos.view.php";
+            require_once "views/enterprise/productos.view.php";
         }
         //Render el detalle del producto
         public function detailProduct($conexion, $cod_empresa){}
         //Render Formulario para registrar
         public function new($conexion, $cod_empresa){
             // require_once "models/productoModel.php";
-            require_once "views/registrar-productos.view.php";
+            require_once "views/enterprise/registrar-productos.view.php";
         }
         //Guardar el nuevo Producto
         public function save($conexion, $cod_empresa){
@@ -40,7 +40,7 @@
 
         //Render Formulario para modificar
         public function modify($conexion, $cod_empresa){
-            require_once "views/mod-productos.view.php";
+            require_once "views/enterprise/mod-productos.view.php";
         }
 
         //Modificar Producto
@@ -83,6 +83,5 @@
             }else{
                 header('Location: producto.php');
             }
-
         }
     }
