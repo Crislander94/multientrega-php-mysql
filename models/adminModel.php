@@ -243,18 +243,14 @@
             return $this->admin;
         }
         public function getDetailsPedido($id){
-            $sql = "select rp.horario_disponible,cat.descripcion as categoria,p.id, c.nombres as nombre_cliente,c.identificacion as identificacion_cliente,
+            $sql = "select cat.descripcion as categoria,p.id, c.nombres as nombre_cliente,c.identificacion as identificacion_cliente,
                     p.fecha_envio as fecha_creacion, pr.nom_producto,
-                    rp.medio_transporte, rp.nombres as nombre_repartidor,
-                    rp.RUC as ruc_repartidor,
                     pr.precio, c.correo as correo_cliente,
-                    rp.correo as correo_repartidor,
                     p.precio as precio_final,
                     pr.ofertas
                     from pedidos p
                     inner join clientes c on c.cod_cliente = p.cliente
                     inner join productos pr on p.producto = pr.id
-                    inner join repartidores rp on rp.cod_repartidor = p.cod_repartidor
                     inner join categorias cat on pr.categoria = cat.id
                     where p.st_pedido = 'P'
                     and p.id = '$id'

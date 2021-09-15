@@ -254,31 +254,20 @@
             if(!empty($data)){
                 $codigo_pedido = $data[0]["id"];
                 $nombre_cliente = $data[0]["nombre_cliente"];
-                $nombre_repartidor = $data[0]["nombre_repartidor"];
                 $nombre_producto = $data[0]["nom_producto"];
                 $precio = '$'.$data[0]["precio"];
                 $ofertas = $data[0]["ofertas"].'%';
                 $precio_final = '$'.$data[0]["precio_final"];
-                $medio_transporte = $data[0]["medio_transporte"];
-                $correo_repartidor = $data[0]["correo_repartidor"];
-                $ruc_repartidor = $data[0]["ruc_repartidor"];
                 $identificacion_cliente = $data[0]["identificacion_cliente"];
                 $correo_cliente = $data[0]["correo_cliente"];
                 $categoria = $data[0]["categoria"];
-                $horario = $data[0]["horario_disponible"];
-                $dias = explode(";", $horario)[0];
-                $horas = explode(";", $horario)[1];
             }else{
                 $codigo_pedido ="";
                 $nombre_cliente = "";
-                $nombre_repartidor = "";
                 $nombre_producto = "";
                 $precio = "";
                 $ofertas = "";
                 $precio_final = "";
-                $medio_transporte = "";
-                $correo_repartidor = "";
-                $ruc_repartidor = "";
                 $identificacion_cliente = "";
                 $correo_cliente = "";
                 $categoria = "";
@@ -303,7 +292,9 @@
         }
         public function disclaimerPedido($conexion){
             require_once "models/adminModel.php";
-            $id = $_POST["cod_pedido"];
+            if(isset($_POST["cod_pedido"])){
+                $id = $_POST["cod_pedido"];
+            }
             $motivos = $_POST["motivo"];
             $admin  = new adminModel($conexion);
             $result = $admin->disclaimerPedido($id, $motivos);
