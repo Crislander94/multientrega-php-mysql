@@ -28,6 +28,28 @@
     unset($_SESSION['error']);
     endif; 
   ?>
+  <?php if(isset($_SESSION['success_repartidor'])) : ?>
+      <div class="alert alert-success alert-dismissible fade show mx-auto mb-4 w-50" role="alert">
+        Se ha registrado al repartidor exitosamente.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  <?php
+    unset($_SESSION['success_repartidor']);
+    endif; 
+  ?>
+  <?php if(isset($_SESSION['repartidor_pending'])) : ?>
+      <div class="alert alert-warning alert-dismissible fade show mx-auto mb-4 w-50" role="alert">
+        El repartidor aun no ha sido aprobado espere mientras se procede al acceso.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  <?php
+    unset($_SESSION['repartidor_pending']);
+    endif; 
+  ?>
   <section id="cabeza" class="text-white font-weigth-bold">
     <div class="row m-0">
       <section class="form-login">
@@ -37,8 +59,11 @@
         <form action="validar-usuario.php" method="POST" name="login_account_access" id="login_account_access">
           <input id="user" class="controls" type="email" placeholder="Correo electrónico" name="email">
           <input id="pass" class="controls" type="password" placeholder="Contraseña" name="password">
-          <div style="text-align: center;">
+          <div style="text-align: center;width:100%" >
             <input class="btnSubmitLogin" id="btnSubmitLogin" type="submit"  value="Acceder"/>
+          </div>
+          <div style="text-align: center; width:100%">
+            <a class="btn btn-primary" style="text-decoration: none; width:100%; font-size:17px !important" href="registrar.php">Registrar Repartidor</a>
           </div>
         </form>
       </section>
@@ -56,7 +81,3 @@
   <script src="js/validaciones_login.js"></script>
 </body>
 </html>
-
-
-
-

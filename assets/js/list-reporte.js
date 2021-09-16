@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <td style="text-align:center">$${ganancia_duenios}</td>
                                     <td style="text-align:center">$${total_ventas}</td>
                                 </tr>`;
-                                total += parseFloat(total_ventas).toFixed(2);
+                                total += parseFloat(total_ventas);
                             }else{
                                 myResponseReports.innerHTML = notFoundItems();
                                 return;
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         // total = ''+total;
                         // total = (total.indexOf('.') != -1)? total: total+'.00'
                         myResponseReports.innerHTML += `<td colspan = ${colspan} style="background:#f2f2f2;text-align:center; font-weight:bold; color:#000">TOTAL</td>
-                        <td style="background:#282a35;color:#fff;text-align:center;font-weight:bold">$${total}</td>`;
+                        <td style="background:#282a35;color:#fff;text-align:center;font-weight:bold">$${total.toFixed(2)}</td>`;
                     
                 }else{
                     myResponseReports.innerHTML = notFoundItems();

@@ -10,9 +10,9 @@
         $controller = new $name_controller();
         return $controller;
     }
-    function loadAction($controller, $action, $conexion, $cod_empresa){
+    function loadAction($controller, $action, $conexion){
         if(isset($action) && method_exists($controller, $action)){
-            $controller->$action($conexion,$cod_empresa);
+            $controller->$action($conexion);
         }else{
             header('Location: repartidor.php');
         }

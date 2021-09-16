@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-left" style="padding-right: 0px !important; padding-left: 0px !important; <?php echo $color; ?>">
     <!-- Brand -->
-    <a class="navbar-brand" href="#" style="padding: 8px !important">Bienvenid@ <?php echo $_SESSION['username'] ?></a>
+    <?php 
+        $nombre_usuarioxxx = (strlen($_SESSION["username"]) > 10) ? substr($_SESSION["username"], 0,9).'...' : $_SESSION["username"];
+    ?>
+    <a class="navbar-brand" href="#" style="padding: 8px !important">Bienvenid@ <?php echo $nombre_usuarioxxx ?></a>
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -37,6 +40,11 @@
                         <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminDelivery'; ?>"><i class="fas fa-truck mr-1"></i>Administrar Repartidores</a>
                         <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderAdminPedidos'; ?>"><i class="fas fa-boxes mr-1"></i>Administrar Pedidos</a>
                         <a class="dropdown-item" href="<?php echo RUTA.'admin.php?c=admin&a=renderReportes'; ?>"><i class="fas fa-window-restore mr-1"></i>Reporteria</a>
+                    <?php endif; ?>
+                    <?php if($_SESSION["tipo_usuario"] === 'R'): ?>
+                        <p class="title_menu">Repartidor</p>
+                        <a class="dropdown-item" href="<?php echo RUTA.'repartidor.php?c=repartidor&a=renderSelectedPedido'; ?>"><i class="fas fa-boxes mr-1"></i>Seleccionar Pedido</a>
+                        <a class="dropdown-item" href="<?php echo RUTA.'repartidor.php?c=repartidor&a=renderReporteria'; ?>"><i class="fas fa-window-restore mr-1"></i>Reporteria</a>
                     <?php endif; ?>
                 </li>
                 <li class="nav-item dropdown">

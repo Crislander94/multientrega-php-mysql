@@ -21,8 +21,8 @@
     }
   }
   if($_SESSION["tipo_usuario"] === 'R'){
-    if(isset($_COOKIE["color_admin"])){
-      $color = $_COOKIE["color_admin"];
+    if(isset($_COOKIE["color_repartidor"])){
+      $color = $_COOKIE["color_repartidor"];
     }
   }
 ?>
@@ -44,6 +44,6 @@
 <body>
     <div class="item-search p-2" style="<?php echo $color; ?>">
         <form class="form-inline" action="/action_page.php">
-          <input class="form-control mr-sm-2" type="search" placeholder="¿Que desea buscar?">
+          <!-- <input class="form-control mr-sm-2" type="search" placeholder="¿Que desea buscar?"> -->
         </form>
     </div>

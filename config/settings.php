@@ -9,4 +9,5 @@
     define("ACTION_MAIN", 'index');
     //Definiendo Rutas por default de los controladores
     define("CONTROLLER_MAIN_ADMIN", 'Admin');
+    define("CONTROLLER_MAIN_REPARTIDOR", 'Repartidor');
 ?>

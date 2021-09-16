@@ -18,7 +18,7 @@
             header('Location: cliente.php');
         }
         if($_SESSION["tipo_usuario"] === 'R'){
-            setcookie("color_cliente","background-color: ".$_POST["color"].' !important;',time()+60*60*24*360,'/');
+            setcookie("color_repartidor","background-color: ".$_POST["color"].' !important;',time()+60*60*24*360,'/');
             header('Location: repartidor.php');
         }
     }

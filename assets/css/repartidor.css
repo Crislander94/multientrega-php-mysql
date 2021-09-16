@@ -1,0 +1,228 @@
+/**Importacion de fuente**/
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro&display=swap');
+.Seccion{
+    margin-top: 60px;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+.Titulos{
+    margin-top: 60px;
+    font-family: 'Advent Pro', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+    color: cornflowerblue;
+}
+.Parrafos{
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-weight: bolder;
+}
+
+
+/**H1,H2,H3**/
+.contenedor-texto, .titulo{
+    margin-top: 50px;
+    font-family: 'Advent Pro', sans-serif;
+    color: rgb(114, 82, 231);
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.Ciudad{
+
+    font-weight: bold;
+    color: coral;
+    font-style: normal;
+}
+
+.Contenedor{
+    background: rgba(38, 248, 108, 0.644);
+    width: 100%;
+    clear: both;
+    content: '';
+    display: table;
+}
+.Menu{
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto 0 auto;
+}
+img{
+    width: 8%;
+    height: 75px;
+    float: left;
+    padding: 8px;
+    margin-left: 10px;
+}
+.TituloNav{
+    font-family: 'Advent Pro', sans-serif;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+    float: left;
+    font-size: 35px;
+}
+
+.BarraNav{
+    width: 70%;
+    float: right;
+}
+
+.ListaNav-Item{
+    margin-top: 15px;
+    list-style: none;
+    margin-left: 70px;
+    padding: 10px 0;
+    float: left;
+    margin-right: 15px;
+}
+.ListaNav-Lin {
+    text-decoration: none;
+    color: rgb(107, 49, 155);
+    font-weight: bold;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 22px;
+    position: relative;
+}
+
+.BarraNav .ListaNav-Lin:hover{
+    
+   color: #71b100;
+    
+}
+
+.container-slider{
+    width: 98%;
+    max-width: 1920px;
+    margin: 10px auto auto auto;
+    overflow: hidden;
+    box-shadow: 0 0 0 10px rgb(43, 141, 14),
+                0 15px 50px;
+    position: relative;
+    margin-top: 40px !important;
+}
+
+.slider{
+    display: flex;
+    width: 400%;
+    height: 400px;
+    margin-left: -100%;
+}
+.slider__section{
+width: 100%;
+}
+.slider__img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.sliderbtn{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.7);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    font-family: monospace;
+    cursor: pointer;
+}
+.sliderbtn:hover{
+    background-color: royalblue;
+}
+.sliderbtn--rigth{
+    right: 10px;
+}
+.sliderbtn--left{
+    left: 10px;
+}
+
+
+
+
+/**Footer**/
+.contenedor-footer{
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(56, 214,90);
+    height: auto;
+    max-width: 1920px;
+    padding-top: 40px;
+    color: white;
+}
+.footer-contenido{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.Imagenes{
+    text-align: center;
+}
+.Titulo-footer{
+    color: white;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 48px;
+}.Parrafo-footer{
+    color: white;
+    max-width: 700px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 15px;
+}
+.Redes{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0 48px 0;
+}
+.ListFoo{
+    margin: 0 10px;
+}
+.Redes a{
+    text-decoration: none;
+    color: rgb(248, 242, 242);
+}
+.Redes a i{
+    font-size: 50px;
+    transition: color .4s ease; 
+}
+.Redes a:hover i{
+    color: black;
+}
+.footer-bottom{
+    background-color: black;
+    max-width: 1920px;
+    padding: 20px 0;
+    text-align: center;
+}
+.footer-bottom p{
+    font-size: 15px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+.footer-bottom span{
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
+}
+.Contenedor-Tablas{
+    text-align: center;
+    margin: 0 50PX;
+}
+
+
