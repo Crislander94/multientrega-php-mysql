@@ -1,24 +1,24 @@
 <div class="contenido contenido_table">
-    <?php if(isset($_SESSION['error'])) : ?>
+    <?php if(isset($_SESSION['error_aprrove'])) : ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-        No se pudo registrar al producto.
+        No se pudo verificar el pedido.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         </div>
     <?php
-        unset($_SESSION['error']);
+        unset($_SESSION['error_aprrove']);
         endif; 
     ?>
-    <?php if(isset($_SESSION['success'])) : ?>
+    <?php if(isset($_SESSION['success_active'])) : ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-        El registro del producto fue exitoso.
+        Se pudo aceptar el pedido con exito.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         </div>
     <?php
-        unset($_SESSION['success']);
+        unset($_SESSION['success_active']);
         endif; 
     ?>
     <?php if(isset($_SESSION['success_mod'])) : ?>
@@ -46,6 +46,7 @@
     <div class="card">
         <div class=" d-flex justify-content-between align-items-center card-header">
             <p class="mb-0">Pedidos</p>
+            <a class="btn btn-info" href="repartidor.php?c=repartidor&a=renderGestionPedidos">Actualizar Estado de tus pedidos</a>
         </div>
     </div>
     <div class="table-responsive">

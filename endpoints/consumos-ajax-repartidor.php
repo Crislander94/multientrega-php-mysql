@@ -8,20 +8,20 @@
         if(
             isset($_POST["filtro"]) &&
             isset($_POST["tipo"]) &&
-            isset($_POST["cod_empresa"])
+            isset($_POST["cod_usuario"])
         ){
             $estado = ($_POST["tipo"] === "cancelados") ? 'X' : 'F';
-            $id = $_POST["cod_empresa"];
             $filtro = $_POST["filtro"];
-            $sql = "select p.precio, p.ganancia_empresa, c.nombres as cliente,
+            $cod_usuario = $_POST["cod_usuario"];
+            $sql = "select p.precio, p.ganancia_repartidor, c.nombres as cliente,
                     pr.nom_producto, 
                     $filtro
                     from pedidos p
                     inner join productos pr on pr.id = p.producto
                     inner join clientes c on c.cod_cliente = p.cliente
                     where p.st_pedido = '$estado'
-                    and pr.cod_empresa ='$id'
-                    order by ganancia_empresa ASC";
+                    and p.cod_repartidor = '$cod_usuario'
+                    order by ganancia_repartidor ASC";
             $statment = $conexion->prepare($sql);
             $statment->execute();
             $data= $statment->fetchAll();
@@ -38,10 +38,10 @@
         exit;
     }
     if($_POST["key"] === 'list-pedidos'){
-        if(isset($_POST["cod_empresa"])){
+        if(isset($_POST["cod_usuario"])){
             $data = null;
-            $cod_empresa = $_POST["cod_empresa"];
-            $sql = "select p.precio, p.ganancia_empresa, c.nombres as cliente,
+            $cod_usuario = $_POST["cod_usuario"];
+            $sql = "select p.precio, p.ganancia_repartidor, c.nombres as cliente,
                     fecha_envio as fecha_creacion, pr.nom_producto, 
                     case p.st_pedido
                         when 'P' then 'Pendiente'
@@ -58,8 +58,9 @@
                     from pedidos p
                     inner join productos pr on pr.id = p.producto
                     inner join clientes c on c.cod_cliente = p.cliente
-                    where p.st_pedido != 'C'
-                    and pr.cod_empresa = '$cod_empresa'
+                    where p.cod_repartidor = '$cod_usuario'
+                    and p.st_pedido != 'C' and p.st_pedido != 'P'
+                    and p.st_pedido != 'E'
                     order by p.ganancia_empresa ASC";
             $statment = $conexion->prepare($sql);
             $statment->execute();
@@ -71,10 +72,7 @@
             }else{
                 $result = array("status" => false, "codigo" => 204 , "data" => $data);
             }
-        }else{
-            $result = array("status" => false, "codigo" => 204 , "data" => null);
         }
-
         header("Content-Type: application/json"); 
         echo json_encode($result, JSON_PRETTY_PRINT);
         exit;

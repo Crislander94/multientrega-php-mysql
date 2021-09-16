@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const form = new FormData();
         const {columnas} = filtros[filtro]; 
         form.append("key", "list-pedidos-filter");
-        form.append("cod_empresa", cod_empresa);
         form.append("filtro", columnas);
+        form.append("cod_usuario", cod_usuario);
         form.append("tipo", filtro);
         const ajax = new XMLHttpRequest();
-        ajax.open("POST", "endpoints/consumos-ajax-empresa.php");
+        ajax.open("POST", "endpoints/consumos-ajax-repartidor.php");
         // <th>Motivo Cancelacion</th>
         ajax.onreadystatechange = () => {
             if(ajax.status === 200 && ajax.readyState === 4){
@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     color = '#DC2E3F';
                     colspan = 6;
                 }else{
-                    header = "<th style='text-align:center'>Ganancias</th>";
-                    color = '#47FF6C';
+                    header = "<th style='text-align:center'>Importe</th>";
+                    color = '#288F5A';
                     colspan = 5;
                 }
                 cabecera.innerHTML = `
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(codigo === 200){
                     body_pedidos_control.innerHTML = '';
                     data.forEach((pedido,index) => {
-                        const {precio,ganancia_empresa,cliente,fecha_creacion,nom_producto} = pedido;
+                        const {precio,ganancia_repartidor,cliente,fecha_creacion,nom_producto} = pedido;
                         const nueva_fecha = transformCreatedDate(fecha_creacion);
                         let tmp_motivo ='';
                         if(filtro === "cancelados"){
@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                                                 <td>${nueva_fecha}</td>
                                                                 <td>$${precio}</td>
                                                                 ${tmp_motivo}
-                                                                <td style="text-align:center">$${ganancia_empresa}</td>
+                                                                <td style="text-align:center">$${ganancia_repartidor}</td>
                                                             </tr>`;
-                        total += parseFloat(ganancia_empresa);
+                        total += parseFloat(ganancia_repartidor);
                     });
                     body_pedidos_control.innerHTML += `<td colspan = ${colspan} style="background:#f2f2f2;text-align:center; font-weight:bold; color:#000">TOTAL</td>
                         <td style="background:${color};color:#fff;text-align:center;font-weight:bold">$${total.toFixed(2)}</td>`;
@@ -78,9 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderPedidos = () => {
         const form = new FormData();
         form.append("key", "list-pedidos");
-        form.append("cod_empresa", cod_empresa);
+        form.append("cod_usuario", cod_usuario);
         const ajax = new XMLHttpRequest();
-        ajax.open("POST", "endpoints/consumos-ajax-empresa.php");
+        ajax.open("POST", "endpoints/consumos-ajax-repartidor.php");
         // <th>Motivo Cancelacion</th>
         ajax.onreadystatechange = () => {
             if(ajax.status === 200 && ajax.readyState === 4){
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(codigo === 200){
                     body_pedidos_control.innerHTML = '';
                     data.forEach((pedido,index) => {
-                        const {precio,ganancia_empresa,cliente,fecha_creacion,nom_producto,estado,color_estado} = pedido;
+                        const {precio,ganancia_repartidor,cliente,fecha_creacion,nom_producto,estado,color_estado} = pedido;
                         const nueva_fecha = transformCreatedDate(fecha_creacion);
                         body_pedidos_control.innerHTML += `<tr>
                                                                 <td>${index+1}</td>
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                                                 <td><span class="badge badge-${color_estado}">${estado}</span></td>
                                                                 <td>${nueva_fecha}</td>
                                                                 <td>${precio}</td>
-                                                                <td>${ganancia_empresa}</td>
+                                                                <td>${ganancia_repartidor}</td>
                                                             </tr>`;
                     });
                 }else{

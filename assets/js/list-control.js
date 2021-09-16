@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     colspan = 6;
                 }else{
                     header = "<th style='text-align:center'>Ganancias</th>";
-                    color = '#47FF6C';
+                    color = '#288F5A';
                     colspan = 5;
                 }
                 cabecera.innerHTML = `

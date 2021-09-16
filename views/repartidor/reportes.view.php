@@ -1,6 +1,6 @@
-<script> const cod_empresa = <?php echo $_SESSION["cod_empresa"]; ?></script>
+<script> const cod_usuario = <?php echo $_SESSION["cod_usuario"]; ?></script>
 <div class="contenido contenido_table">
-    <h2 class="text-center">Control de pedidos</h2>
+    <h2 class="text-center">Reporte de tus pedidos</h2>
     <div class="card">
         <div class="card-header">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
@@ -24,7 +24,7 @@
                     <th>Cliente</th>
                     <th>Fecha Creacion</th>
                     <th>Precio</th>
-                    <th>Ganancia</th>
+                    <th>Importe</th>
                     <th>Estado</th>
                     <th>Motivo Cancelacion</th>
                 </tr>
@@ -37,7 +37,7 @@
                                 <img src="assets/img/not_found.svg" alt="#Not Found" class="img_thumb">
                             </div>
                         </div>
-                        <span style="font-style:italic;">No se han encontrado pedidos para controlar</span>
+                        <span style="font-style:italic;">No se han encontrado pedidos para el reporte</span>
                     </td>
                 </tr>
             </tbody>
@@ -46,4 +46,4 @@
 </div>
 
 
-<script src="assets/js/list-control.js"></script>
+<script src="assets/js/list-reportes-repartidor.js"></script>
