@@ -91,17 +91,17 @@
                         <td style="color:#12121; font-weight:bold;"><?php echo $fecha_final; ?></td>
                         <td>
                             <div class="btn-group mb-3" role="group" aria-label="Basic example">
-                                <a href="<?php echo RUTA.'admin.php?c=admin&a=getDetailsDelivery&id='.$repartidor['RUC']; ?>"  data-toggle="tooltip" data-placement="top" title="Revisar Repartidor" id="modificar1">
+                                <a href="<?php echo RUTA.'admin.php?c=admin&a=getDetailsDelivery&id='.$repartidor['RUC'].'&cod_usuario='.$repartidor["cod_usuario"]; ?>"  data-toggle="tooltip" data-placement="top" title="Revisar Repartidor" id="modificar1">
                                     <button type="button" style="border-radius: 5px 0 0 5px;" class="btn btn-info">
                                         <i style="color:#fff; font-size:16px !important;" class="fas fa-eye"></i>
                                     </button>
                                 </a>
-                                <a href="<?php echo RUTA.'admin.php?c=admin&a=approveDelivery&id='.$repartidor['RUC']; ?>"  data-toggle="tooltip" data-placement="top" title="Aprobar Repartidor" id="modificar1">
+                                <a href="<?php echo RUTA.'admin.php?c=admin&a=approveDelivery&id='.$repartidor['RUC'].'&cod_usuario='.$repartidor["cod_usuario"]; ?>"  data-toggle="tooltip" data-placement="top" title="Aprobar Repartidor" id="modificar1">
                                     <button type="button" style="border-radius: 0px !important;" class="btn btn-success">
                                         <i style="color:#fff; font-size:16px !important;" class="fas fa-check alt"></i>
                                     </button>
                                 </a>
-                                <a href="<?php echo RUTA.'admin.php?c=admin&a=disclaimerDelivery&id='.$repartidor['RUC']; ?>" data-toggle="tooltip" data-placement="top"  title="" data-original-title="Cancelación Repartidor" id="modificar1">
+                                <a href="<?php echo RUTA.'admin.php?c=admin&a=disclaimerDelivery&id='.$repartidor['RUC'].'&cod_usuario='.$repartidor["cod_usuario"]; ?>" data-toggle="tooltip" data-placement="top"  title="" data-original-title="Cancelación Repartidor" id="modificar1">
                                     <button type="button" style="border-radius:0 5px 5px 0" class="btn btn-danger izquierdo" >
                                         <i style="color:#fff; font-size:16px !important;" class="fas fa-times alt"></i>
                                     </button>

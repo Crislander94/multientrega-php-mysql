@@ -83,6 +83,7 @@
                 $dias = explode(";", $horario)[0];
                 $horas = explode(";", $horario)[1];
                 $medio_transporte = $data[0]["medio_transporte"];
+                $cod_usuario = $data[0]["cod_usuario"];
             }else{
                 $nombre = "";
                 $identificacion = "";
@@ -91,6 +92,7 @@
                 $dias = "";
                 $horas = "";
                 $medio_transporte = "";
+                $cod_usuario = "";
                 $_SESSION['empty']  = true;
             }
             //Traemos la vista para renderizar al repartidor....
@@ -100,8 +102,9 @@
         public function approveDelivery($conexion){
             require_once "models/adminModel.php";
             $id = $_REQUEST['id'];
+            $cod_usuario = $_REQUEST["cod_usuario"];
             $admin  = new adminModel($conexion);
-            $result = $admin->approveDelivery($id);
+            $result = $admin->approveDelivery($id,$cod_usuario);
             if(!$result){
                 $_SESSION['error_aprrove'] = true;
             }else{
@@ -112,8 +115,9 @@
         public function disclaimerDelivery($conexion){
             require_once "models/adminModel.php";
             $id = $_REQUEST['id'];
+            $cod_usuario = $_REQUEST["cod_usuario"];
             $admin  = new adminModel($conexion);
-            $result = $admin->disclaimerDelivery($id);
+            $result = $admin->disclaimerDelivery($id,$cod_usuario);
             if(!$result){
                 $_SESSION['error_disclaimer'] = true;
             }else{

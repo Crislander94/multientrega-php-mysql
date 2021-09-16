@@ -83,8 +83,8 @@
                 <?php if($identificacion === ''): ?>
                     <a href="<?php echo RUTA?>admin.php?c=admin&a=renderAdminDelivery" class="btn btn-info">Regresar</a>
                 <?php else: ?>
-                    <a href="<?php echo RUTA?>admin.php?c=admin&a=approveDelivery&id=<?php echo $id?>" class="btn btn-success">Aprobar Repartidor</a>
-                    <a href="<?php echo RUTA?>admin.php?c=admin&a=disclaimerDelivery&id=<?php echo $id?>" class="btn btn-danger ml-2">Cancelar Repartidor</a>
+                    <a href="<?php echo RUTA?>admin.php?c=admin&a=approveDelivery&id=<?php echo $id?>&cod_usuario=<?php echo $cod_usuario?>" class="btn btn-success">Aprobar Repartidor</a>
+                    <a href="<?php echo RUTA?>admin.php?c=admin&a=disclaimerDelivery&id=<?php echo $id?>&cod_usuario=<?php echo $cod_usuario?>" class="btn btn-danger ml-2">Cancelar Repartidor</a>
                 <?php endif; ?>
             </div>
         </div>

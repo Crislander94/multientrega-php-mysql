@@ -93,14 +93,14 @@
                             <div class="btn-group mb-3" role="group" aria-label="Basic example">
                                 <?php if($status_repartidor) : ?>
                                 <a href="<?php echo RUTA.'repartidor.php?c=repartidor&a=selectedPedido&id='.$pedido['id']; ?>"  data-toggle="tooltip" data-placement="top" title="Seleccionar Pedido" id="modificar1">
-                                    <button type="button" style="border-radius: 5px 0 0 5px;" class="btn btn-info">
-                                        <i style="color:#fff; font-size:16px !important;" class="fas fa-eye"></i>
+                                    <button type="button" style="border-radius: 5px;" class="btn btn-success">
+                                        <i style="color:#fff; font-size:16px !important;" class="fas fa-check alt"></i>
                                     </button>
                                 </a>
                                 <?php else :?>
                                 <a href="#"  data-toggle="tooltip" data-placement="top" title="No estás disponible" id="modificar1">
-                                    <button type="button" style="border-radius: 0px !important;" class="btn btn-success">
-                                        <i style="color:#fff; font-size:16px !important;" class="fas fa-check alt"></i>
+                                    <button type="button" style="border-radius: 5px !important;" class="btn btn-info">
+                                        <i style="color:#fff; font-size:16px !important;" class="fas fa-bath"></i>
                                     </button>
                                 </a>
                                 <?php endif; ?>
@@ -113,7 +113,12 @@
         </table>
     </div>
 </div>
+<?php var_dump($status_repartidor)?>
 <?php include_once 'partials/footer.php' ?>
 <script>
-    const status_repartidor = <?php echo $status_repartidor;?>
+    const status_repartidor = '<?php echo $status_repartidor?>';
+    if(status_repartidor === ''){
+        Swal.fire(
+            'Horario Laboral Terminado','No puede hacer la gestión de seleccion. Ya acabo su turno', 'info')
+    }
 </script>

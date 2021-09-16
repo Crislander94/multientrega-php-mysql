@@ -31,16 +31,6 @@
         $min_desde = $_POST['min_desde'];
         $hasta_hora = $_POST['hasta_hora'];
         $min_hasta = $_POST['min_hasta'];
-        if(intval($desde_hora) > 12){
-            $min_desde .= 'PM';
-        }else{
-            $min_desde .= 'AM ';
-        }
-        if(intval($hasta_hora) > 12){
-            $min_hasta .= 'PM';
-        }else{
-            $min_hasta .= 'AM';
-        }
         $horario_final = $desde_hora.':'.$min_desde.'-'.$hasta_hora.':'.$min_hasta;
         foreach ($horarios as $key => $horario) {
             if($key === count($horarios) -1){

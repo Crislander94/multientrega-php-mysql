@@ -66,11 +66,11 @@
                 return false;
             }
         }
-
         public function getGestionDeliverys(){
             $sql = "SELECT 
                     cod_repartidor,
-                    nombres, 
+                    nombres,
+                    cod_usuario,
                     RUC, created_at as fecha_creacion
                     from repartidores
                     where st_repartidor = 'P' ";
@@ -80,10 +80,10 @@
             return $this->admin;
         }
         public function getDetailsDelivery($id){
-
             $sql = "SELECT 
                     nombres, 
-                    RUC, 
+                    RUC,
+                    cod_usuario,
                     correo, 
                     telefono, horario_disponible, medio_transporte 
                     from repartidores
@@ -94,7 +94,7 @@
             return $this->admin;
         }
 
-        public function approveDelivery($id){
+        public function approveDelivery($id, $cod_usuario){
             $sql ="update repartidores set st_repartidor = 'A' where RUC = '$id'";
             try{
                 //Iniciamos la transaccion
@@ -102,6 +102,8 @@
                 $this->db->beginTransaction();
                 //Ejecutamos el query
                 $this->db->exec($sql);
+                $xsql = "update users set st_user = 'A' where id = '$cod_usuario'";
+                $this->db->exec($xsql);
                 $this->db->commit();
                 return true;
             }catch(Exception $e){
@@ -110,7 +112,7 @@
                 return false;
             }
         }
-        public function disclaimerDelivery($id){
+        public function disclaimerDelivery($id, $cod_usuario){
             $sql ="update repartidores set st_repartidor = 'X' where RUC = '$id'";
             try{
                 //Iniciamos la transaccion
@@ -118,6 +120,8 @@
                 $this->db->beginTransaction();
                 //Ejecutamos el query
                 $this->db->exec($sql);
+                $xsql = "delete from users where id = '$cod_usuario'";
+                $this->db->exec($xsql);
                 $this->db->commit();
                 return true;
             }catch(Exception $e){
