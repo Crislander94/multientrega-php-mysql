@@ -1,5 +1,6 @@
 <?php 
   require_once 'validar-login.php';
+  $ruta = $_SERVER['HTTP_HOST'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,6 +23,7 @@
 <body class="bg-light" style="margin-left: 0px !important;">
   <nav class="card p-2" style="border-bottom: 1px solid rgba(0,0,0,.1)">
     <a class="navbar-brand" style="color:#000;" href="#">MULTI-ENTREGA</a>
+    <a class="btn btn-success w-25" style="color:#fff;" href="<?php echo 'https://'.$ruta.'/multientrega-clientes-master' ?>">Revisa la interfaz del cliente</a>
   </nav>
   <hr style="color:#000; opacity: .4">
   <?php if(isset($_SESSION['error'])) : ?>
