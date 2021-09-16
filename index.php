@@ -7,7 +7,7 @@
         if($_SESSION["tipo_usuario"] === 'A') header('Location: admin.php');
         if($_SESSION["tipo_usuario"] === 'R') header('Location: repartidor.php');
         if($_SESSION["tipo_usuario"] === 'C') header('Location: cliente.php');
-    } 
+    }
     //If el usuario no tiene empresa que la registre....
     if(!isset($_SESSION["cod_empresa"])) header('Location: registrar-empresa.php');
     //Consulta SQL para traer los datos de la empresa

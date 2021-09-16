@@ -19,6 +19,7 @@
             $result = $statment->fetchAll();
             if(count($result) ===1){
                 $estado_usuario = $result[0]["st_user"];
+                $_SESSION['cod_empresa'] = $result[0]['cod_empresa'];
                 if($estado_usuario === null){
                     if($result[0]['cod_empresa'] != null){
                         $xsql = "Select st_empresa
@@ -31,7 +32,6 @@
                     }
                     $_SESSION['username'] = $result[0]['username'];
                     $_SESSION['cod_usuario'] = $result[0]['id'];
-                    $_SESSION['cod_empresa'] = $result[0]['cod_empresa'];
                     $_SESSION['tipo_usuario'] = $result[0]['tipo_usuario'];
                     header('Location: ../index.php');
                 }else{
