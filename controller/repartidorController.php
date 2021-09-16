@@ -17,7 +17,6 @@
             $dias_disponibles = explode(',',$dias_disponibles);
             $dia_actual = date('N');
             $dia_actual = $dias[$dia_actual-1];
-            if(in_array($dia_actual, $dias_disponibles)) $status_repartidor = true;
             //Sacar hora exacta
             $hora_inicio = explode("-", $horas_disponibles)[0];
             $hora_final = explode("-", $horas_disponibles)[1];
@@ -61,6 +60,7 @@
             }else{
                 $status_repartidor = false;
             }
+            if(!in_array($dia_actual, $dias_disponibles)) $status_repartidor = false;
             require_once 'views/repartidor/seleccionar.view.php';
         }
 
@@ -100,7 +100,6 @@
             $dias_disponibles = explode(',',$dias_disponibles);
             $dia_actual = date('N');
             $dia_actual = $dias[$dia_actual-1];
-            if(in_array($dia_actual, $dias_disponibles)) $status_repartidor = true;
             //Sacar hora exacta
             $hora_inicio = explode("-", $horas_disponibles)[0];
             $hora_final = explode("-", $horas_disponibles)[1];
@@ -144,6 +143,7 @@
             }else{
                 $status_repartidor = false;
             }
+            if(!in_array($dia_actual, $dias_disponibles)) $status_repartidor = false;
             require_once 'views/repartidor/gestion_pedidos.view.php';
         }
         public function activePedido($conexion){

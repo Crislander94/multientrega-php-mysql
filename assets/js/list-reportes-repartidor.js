@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 cabecera.innerHTML = `
                     <tr>
-                        <td style="width:100%;text-align:center" colspan=7><h3>Control ${filtro}</h3></td>
+                        <td style="width:100%;text-align:center" colspan=7><h3>Reporte ${filtro}</h3></td>
                     </tr>
                     <tr>
                         <th>#</th>
